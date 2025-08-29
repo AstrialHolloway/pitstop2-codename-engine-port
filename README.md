@@ -14,3 +14,4 @@ Mod includes:
 5. V-Slice Freeplay Menu
 6. Character Select
 7. Custom Events
+8. Credits
