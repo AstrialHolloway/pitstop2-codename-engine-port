@@ -15,3 +15,4 @@ Mod includes:
 6. Character Select
 7. Custom Events
 8. Credits
+9. Results Screen (update 2)
