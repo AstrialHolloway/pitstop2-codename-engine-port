@@ -1,3 +1,10 @@
 Update 1:
 
-1. Easy to mod freeplay menu
+1. Freeplay revamp
+2. Freeplay categories
+3. Freeplay new tag
+
+Update 2:
+
+1. Results
+2. Song Freeplay rankings
