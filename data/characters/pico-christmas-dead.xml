@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<!-- Made with WizardMantis's Character Converter on https://codename-engine.com/ -->
+<character sprite="mallPico/picoChristmasDeath" icon="pico" color="#b7d855" x="15" y="335" flipX="true">
+	<anim name="firstDeath" anim="DEATH PICO xmas" x="225" y="125" indices="0..47"/>
+	<anim name="deathLoop" anim="DEATH PICO xmas" x="225" y="125" loop="true" indices="48..63"/>
+</character>

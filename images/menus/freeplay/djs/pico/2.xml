@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="2.png" width="2879" height="2627">
+	<SubTexture name="Pico DJ to CS0001" x="1986" y="1871" width="405" height="474" frameX="-51" frameY="-271" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0002" x="1986" y="1871" width="405" height="474" frameX="-51" frameY="-271" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0003" x="1192" y="2094" width="427" height="445" frameX="-29" frameY="-300" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0004" x="1192" y="2094" width="427" height="445" frameX="-29" frameY="-300" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0005" x="2394" y="1871" width="405" height="426" frameX="-51" frameY="-319" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0006" x="2394" y="1871" width="405" height="426" frameX="-51" frameY="-319" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0007" x="2422" y="1176" width="405" height="426" frameX="-51" frameY="-319" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0008" x="398" y="2183" width="423" height="440" frameX="-33" frameY="-305" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0009" x="2455" y="1" width="423" height="440" frameX="-33" frameY="-305" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0010" x="1986" y="1311" width="433" height="557" frameX="-23" frameY="-188" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0011" x="2048" y="631" width="437" height="542" frameX="-19" frameY="-203" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0012" x="1192" y="739" width="456" height="631" frameX="-0" frameY="-114" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0013" x="1202" y="1" width="456" height="631" frameX="-0" frameY="-114" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0014" x="795" y="1479" width="394" height="701" frameX="-62" frameY="-44" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0015" x="1" y="1489" width="394" height="701" frameX="-62" frameY="-44" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0016" x="1589" y="1373" width="394" height="673" frameX="-62" frameY="-72" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0017" x="1651" y="635" width="394" height="673" frameX="-62" frameY="-72" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0018" x="1" y="741" width="394" height="745" frameX="-62" frameY="-0" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0019" x="398" y="741" width="394" height="745" frameX="-62" frameY="-0" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0020" x="1" y="1" width="399" height="737" frameX="-57" frameY="-8" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0021" x="403" y="1" width="399" height="737" frameX="-57" frameY="-8" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0022" x="795" y="741" width="394" height="735" frameX="-62" frameY="-10" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0023" x="805" y="1" width="394" height="735" frameX="-62" frameY="-10" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0024" x="1192" y="1373" width="394" height="718" frameX="-62" frameY="-27" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0025" x="1192" y="1373" width="394" height="718" frameX="-62" frameY="-27" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0026" x="398" y="1489" width="394" height="687" frameX="-62" frameY="-58" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0027" x="1661" y="1" width="394" height="627" frameX="-62" frameY="-118" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0028" x="2058" y="1" width="394" height="593" frameX="-62" frameY="-152" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0029" x="1" y="2193" width="394" height="433" frameX="-62" frameY="-312" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0030" x="2394" y="2300" width="394" height="266" frameX="-62" frameY="-479" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0031" x="2422" y="1605" width="394" height="225" frameX="-62" frameY="-520" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0032" x="1622" y="2348" width="394" height="225" frameX="-62" frameY="-520" frameWidth="456" frameHeight="745"/>
+	<SubTexture name="Pico DJ to CS0033" x="1622" y="2348" width="394" height="225" frameX="-62" frameY="-520" frameWidth="456" frameHeight="745"/>
+</TextureAtlas>

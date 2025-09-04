@@ -1,0 +1,44 @@
+{
+	"events": [
+		{
+			"params": [
+				0,
+				"tankman-bloody-cut1",
+				0,
+				false
+			],
+			"time": 62106.7415730337,
+			"name": "Change Character"
+		},
+		{
+			"params": [
+				1,
+				"knifeToss",
+				true,
+				"NONE"
+			],
+			"time": 63370.7865168539,
+			"name": "Play Animation"
+		},
+		{
+			"params": [
+				0,
+				"tankman-bloody",
+				0,
+				true
+			],
+			"time": 64719.1011235955,
+			"name": "Change Character"
+		},
+		{
+			"params": [
+				0,
+				"good",
+				true,
+				"NONE"
+			],
+			"time": 115955.056179775,
+			"name": "Play Animation"
+		}
+	]
+}

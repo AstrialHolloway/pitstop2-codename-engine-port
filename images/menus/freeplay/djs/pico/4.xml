@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="4.png" width="396" height="4184">
+	<SubTexture name="Pico DJ0001" x="1" y="1" width="394" height="467" frameX="-0" frameY="-0" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0002" x="1" y="1" width="394" height="467" frameX="-0" frameY="-0" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0003" x="1" y="471" width="394" height="465" frameX="-0" frameY="-2" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0004" x="1" y="939" width="394" height="465" frameX="-0" frameY="-2" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0005" x="1" y="1871" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0006" x="1" y="1871" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0007" x="1" y="1407" width="394" height="461" frameX="-0" frameY="-6" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0008" x="1" y="1407" width="394" height="461" frameX="-0" frameY="-6" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0009" x="1" y="2334" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0010" x="1" y="2334" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0011" x="1" y="2797" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0012" x="1" y="3260" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0013" x="1" y="3723" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+	<SubTexture name="Pico DJ0014" x="1" y="3723" width="394" height="460" frameX="-0" frameY="-7" frameWidth="394" frameHeight="467"/>
+</TextureAtlas>

@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai-angry",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Roses Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 128,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "dad",
+	"difficulties": [
+		"Easy",
+		"Normal",
+		"Hard"
+	],
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Dad Battle (Pico Mix)",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 180,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}

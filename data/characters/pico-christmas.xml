@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="picoChristmas" flipX="true" y="250" isPlayer="true" icon="pico" color="#B7D855">
+	<anim name="idle" anim="Pico Idle Dance xmas"/>
+	<anim name="singDOWN" anim="Pico Down Note xmas" x="46" y="-85"/>
+	<anim name="singRIGHT" anim="Pico Note Right xmas" x="-93" y="-3"/>
+	<anim name="singLEFT" anim="Pico NOTE LEFT xmas" x="65" y="-16"/>
+	<anim name="singUP" anim="pico Up note xmas" x="30" y="25"/>
+	<anim name="singDOWNmiss" anim="Pico Down Note MISS xmas" x="45" y="-42" indices="1..6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6"/>
+	<anim name="singLEFTmiss" anim="Pico NOTE LEFT miss xmas" x="64" y="20"/>
+	<anim name="singRIGHTmiss" anim="Pico Note Right Miss xmas" x="-87" y="45" indices="1..6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6"/>
+	<anim name="singUPmiss" anim="pico Up note miss xmas" x="26" y="63" indices="1..6"/>
+</character>

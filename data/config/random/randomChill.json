@@ -1,0 +1,35 @@
+{
+    "char": {
+        "position": [
+            780, 
+            180
+        ],
+        "assetPath": "randomChill",
+        "animations": {
+            "idle": {
+                "prefix": "idle",
+                "frameRate": 24,
+                "looping": true,
+                "offsets": [ 0, 0 ]
+            },
+            "in": {
+                "prefix": "in",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ 0, 0 ]
+            },
+            "explode": {
+                "prefix": "explode",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -150, -190 ]
+            },
+            "fail": {
+                "prefix": "fail",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ 0, 0 ]
+            }
+        }
+    }
+}

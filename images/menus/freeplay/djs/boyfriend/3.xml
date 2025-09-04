@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="3.png" width="2013" height="2101">
+	<SubTexture name="Boyfriend DJ to CS0001" x="412" y="1039" width="394" height="452" frameX="-45" frameY="-70" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0002" x="412" y="1039" width="394" height="452" frameX="-45" frameY="-70" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0003" x="1221" y="1" width="394" height="448" frameX="-45" frameY="-74" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0004" x="1" y="1507" width="439" height="365" frameX="-0" frameY="-157" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0005" x="443" y="1494" width="439" height="365" frameX="-0" frameY="-157" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0006" x="1214" y="860" width="394" height="372" frameX="-45" frameY="-150" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0007" x="1213" y="1235" width="394" height="372" frameX="-45" frameY="-150" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0008" x="1221" y="452" width="394" height="405" frameX="-45" frameY="-117" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0009" x="816" y="1009" width="394" height="453" frameX="-45" frameY="-69" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0010" x="816" y="1009" width="394" height="453" frameX="-45" frameY="-69" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0011" x="412" y="526" width="401" height="510" frameX="-45" frameY="-12" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0012" x="412" y="526" width="401" height="510" frameX="-45" frameY="-12" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0013" x="817" y="1" width="401" height="510" frameX="-45" frameY="-12" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0014" x="1" y="1" width="405" height="522" frameX="-45" frameY="-0" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0015" x="409" y="1" width="405" height="522" frameX="-45" frameY="-0" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0016" x="409" y="1" width="405" height="522" frameX="-45" frameY="-0" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0017" x="1" y="526" width="408" height="511" frameX="-45" frameY="-11" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0018" x="1" y="526" width="408" height="511" frameX="-45" frameY="-11" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0019" x="817" y="514" width="394" height="492" frameX="-45" frameY="-30" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0020" x="817" y="514" width="394" height="492" frameX="-45" frameY="-30" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0021" x="1" y="1040" width="394" height="464" frameX="-45" frameY="-58" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0022" x="1618" y="1" width="394" height="349" frameX="-45" frameY="-173" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0023" x="1618" y="353" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0024" x="1618" y="353" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0025" x="1618" y="581" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0026" x="1618" y="581" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0027" x="1618" y="809" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0028" x="1618" y="809" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0029" x="1611" y="1037" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0030" x="1611" y="1037" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0031" x="1610" y="1265" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0032" x="1610" y="1265" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0033" x="1610" y="1493" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0034" x="1610" y="1493" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0035" x="885" y="1610" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0036" x="885" y="1610" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0037" x="1" y="1875" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0038" x="1" y="1875" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0039" x="398" y="1875" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0040" x="398" y="1875" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0041" x="1618" y="581" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0042" x="1618" y="581" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+	<SubTexture name="Boyfriend DJ to CS0043" x="795" y="1862" width="394" height="225" frameX="-45" frameY="-297" frameWidth="453" frameHeight="522"/>
+</TextureAtlas>

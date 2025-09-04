@@ -1,0 +1,34 @@
+{
+	"events": [
+		{
+			"params": [
+				1,
+				"hey",
+				true,
+				"NONE"
+			],
+			"time": 6047.5,
+			"name": "Play Animation"
+		},
+		{
+			"params": [
+				1,
+				"cheer",
+				true,
+				"NONE"
+			],
+			"time": 18800,
+			"name": "Play Animation"
+		},
+		{
+			"params": [
+				1,
+				"cheer",
+				true,
+				"NONE"
+			],
+			"time": 44400,
+			"name": "Play Animation"
+		}
+	]
+}

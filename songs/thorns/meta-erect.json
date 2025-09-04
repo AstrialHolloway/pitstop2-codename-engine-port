@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "spirit",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Thorns Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 190,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<!-- Made with WizardMantis's Character Converter on https://codename-engine.com/ -->
+<character sprite="mallPico/neneChristmas" icon="nene" color="#a1a1a1" y="200" camx="-50" camy="100" holdTime="6.1">
+	<anim name="danceLeft" anim="Nene Abot Idle xmas" indices="0..14"/>
+	<anim name="danceRight" anim="Nene Abot Idle xmas" indices="15..29"/>
+	<anim name="combo50" anim="combo celebration 1 nene xmas0" x="-119" y="55"/>
+	<anim name="laughCutscene" anim="laughing nene xmas" x="17" y="-5" indices="0..11,7..11,7..11,7..11,7..11,7..11"/>
+	<anim name="combo100" anim="ComboFawn0" x="-41" y="-15" indices="0..6,4..6,4..6,4..6"/>
+	<anim name="raiseKnife" anim="knife raise xmas0" x="0" y="52"/>
+	<anim name="idleKnife" anim="knife high held xmas0" x="-99" y="52"/>
+	<anim name="lowerKnife" anim="knife lower xmas0" x="135" y="52"/>
+</character>

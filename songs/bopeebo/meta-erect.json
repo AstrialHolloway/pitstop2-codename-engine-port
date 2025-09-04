@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "dad",
+	"difficulties": [
+		"Erect",
+		"Nightmare"
+	],
+	"color": "#9271FD",
+	"coopAllowed": false,
+	"stepsPerBeat": 2,
+	"displayName": "Bopeebo Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 6,
+	"bpm": 123,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

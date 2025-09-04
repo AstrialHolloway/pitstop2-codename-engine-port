@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="4.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="fail0000" x="317" y="0" width="323" height="381" frameX="-12" frameY="-4" frameWidth="333" frameHeight="410"/>
+	<SubTexture name="fail0001" x="0" y="410" width="249" height="374" frameX="-56" frameY="-13" frameWidth="333" frameHeight="410"/>
+	<SubTexture name="fail0002" x="0" y="0" width="317" height="410" frameX="2" frameY="-2" frameWidth="333" frameHeight="410"/>
+	<SubTexture name="fail0003" x="640" y="0" width="296" height="406" frameX="-16" frameY="2" frameWidth="333" frameHeight="410"/>
+</TextureAtlas>

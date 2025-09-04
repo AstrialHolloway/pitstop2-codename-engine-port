@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-15" y="200" sprite="nenePixel/nenePixel" scale="6" antialiasing="false" camx="-150" camy="100" color="#E45976" holdTime="6.1">
+	<anim name="danceLeft" anim="idle" indices="0..13"/>
+	<anim name="danceRight" anim="idle" indices="14..27"/>
+	<anim name="raiseKnife" anim="raise" y="1.67"/>
+	<anim name="idleKnife" anim="blink" x="-3.17" y="1.67"/>
+	<anim name="lowerKnife" anim="lower" y="1.67" indices="0..5"/>
+</character>

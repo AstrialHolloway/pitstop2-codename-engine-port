@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "parents-christmas",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#A0D1FF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Cocoa Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 174,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

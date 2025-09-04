@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="3.png" width="6996" height="464">
+	<SubTexture name="Pico DJ confirm0001" x="6591" y="1" width="404" height="462" frameX="-35" frameY="-0" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0002" x="6157" y="1" width="431" height="455" frameX="-8" frameY="-7" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0003" x="5273" y="1" width="439" height="450" frameX="-0" frameY="-12" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0004" x="5273" y="1" width="439" height="450" frameX="-0" frameY="-12" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0005" x="5715" y="1" width="439" height="450" frameX="-0" frameY="-12" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0006" x="4435" y="1" width="416" height="440" frameX="-23" frameY="-22" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0007" x="4854" y="1" width="416" height="440" frameX="-23" frameY="-22" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0008" x="3595" y="1" width="417" height="438" frameX="-22" frameY="-24" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0009" x="4015" y="1" width="417" height="438" frameX="-22" frameY="-24" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0010" x="2801" y="1" width="394" height="434" frameX="-45" frameY="-28" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0011" x="3198" y="1" width="394" height="434" frameX="-45" frameY="-28" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0012" x="1" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0013" x="401" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0014" x="801" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0015" x="1201" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0016" x="1601" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0017" x="2001" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0018" x="2001" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0019" x="2401" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+	<SubTexture name="Pico DJ confirm0020" x="2401" y="1" width="397" height="432" frameX="-42" frameY="-30" frameWidth="439" frameHeight="462"/>
+</TextureAtlas>

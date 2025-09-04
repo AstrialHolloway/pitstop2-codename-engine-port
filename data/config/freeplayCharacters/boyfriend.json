@@ -1,0 +1,121 @@
+{
+    "arrowSprite": "freeplaySelector",
+    "songList": [
+        "random",
+        
+        "test",
+        "tutorial",
+
+        "bopeebo",
+        "fresh",
+        "dadbattle",
+
+        "spookeez",
+        "south",
+        "monster",
+
+        "pico",
+        "philly nice",
+        "blammed",
+
+        "satin panties",
+        "high",
+        "milf",
+
+        "cocoa",
+        "eggnog",
+        "winter horrorland",
+
+        "senpai",
+        "roses",
+        "thorns",
+
+        "ugh",
+        "guns",
+        "stress"
+    ],
+    "bgCardColor": "#ffd863",
+    "bgSprite": "bfBackground",
+    "dj": {
+        "position": [
+            20, 
+            280
+        ],
+        "assetPath": "boyfriend",
+        "animations": {
+            "intro": {
+                "prefix": "boyfriend dj intro",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -5, -426 ]
+            },
+            "idle": {
+                "prefix": "Boyfriend DJ0",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ 0, 0 ]
+            },
+            "exit": {
+                "prefix": "Boyfriend DJ to CS",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -45, -64 ]
+            },
+            "confirm": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            },
+            "secret": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            },
+            "tv-intro": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            },
+            "tv-idle": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            },
+            "fail": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            },
+            "win": {
+                "prefix": "Boyfriend DJ confirm",
+                "frameRate": 24,
+                "looping": false,
+                "offsets": [ -42, 25 ]
+            }
+        }
+    },
+    "loopingSprites": {
+
+    },
+    "capsule": {
+        "assetPath": "bf",
+        "animations": {
+            "selected": {
+                "prefix": "mp3 capsule w backing0",
+                "frameRate": "",
+                "offsets": [ -5, 0 ]
+            },
+            "deselected": {
+                "prefix": "mp3 capsule w backing NOT SELECTED",
+                "frameRate": "",
+                "offsets": [ 0, 0 ]
+            }
+        }
+    },
+    "glowColor": "#00CCFF"
+}

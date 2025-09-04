@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"color": "#941653",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Pico (Pico Mix)",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 150,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}

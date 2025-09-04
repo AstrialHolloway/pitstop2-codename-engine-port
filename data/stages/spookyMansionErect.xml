@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" folder="stages/spooky/erect/" name="spookyMansionErect">
+	<sprite name="outdoorTrees" x="190" y="30" sprite="bgtrees" scroll="0.85"/>
+	<sprite name="corridorDark" x="-360" y="-220" sprite="bgDark" scroll="1" />
+	<boyfriend x="990" y="100" scroll="1"/>
+	<girlfriend x="490" y="130" scroll="1" />
+	<character name="nene-dark" x="600" y="-130"/>
+	<dad x="170" y="100" scroll="1" />
+	<sprite name="stairsDark" x="966" y="-225" sprite="stairsDark" scroll="1"/>
+</stage>

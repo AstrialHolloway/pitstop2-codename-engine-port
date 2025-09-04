@@ -1,0 +1,14 @@
+{
+    "params": [
+        {
+            "name": "Image",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "Time Desplayed (steps)",
+            "type": "Int(0, 999, 1)",
+            "defaultValue": "1"
+        }
+    ]
+}

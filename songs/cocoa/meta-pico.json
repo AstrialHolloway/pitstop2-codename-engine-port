@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "parents-christmas",
+	"difficulties": [
+		"Easy",
+		"Normal",
+		"Hard"
+	],
+	"color": "#A0D1FF",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Cocoa (Pico Mix)",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 100,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}

@@ -1,0 +1,14 @@
+{
+    "params": [
+        {
+            "name": "Character",
+            "type": "StrumLine",
+            "defaultValue": ""
+        },
+        {
+            "name": "New Character",
+            "type": "String",
+            "defaultValue": "dad"
+        }
+    ]
+}

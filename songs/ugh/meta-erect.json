@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "tankman",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#E1E1E1",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Ugh Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 170,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

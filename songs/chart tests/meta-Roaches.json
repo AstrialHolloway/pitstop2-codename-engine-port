@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"Test"
+	],
+	"color": "#88C516",
+	"coopAllowed": false,
+	"stepsPerBeat": 2,
+	"displayName": "Roaches",
+	"needsVoices": true,
+	"beatsPerMeasure": 6,
+	"bpm": 120,
+	"instSuffix": "-Roaches",
+	"vocalsSuffix": "-Roaches"
+}

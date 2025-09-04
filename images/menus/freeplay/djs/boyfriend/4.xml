@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="4.png" width="407" height="7292">
+	<SubTexture name="boyfriend dj intro0001" x="1" y="6838" width="395" height="225" frameX="-4" frameY="-784" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0002" x="1" y="7066" width="395" height="225" frameX="-4" frameY="-704" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0003" x="1" y="6609" width="395" height="226" frameX="-4" frameY="-662" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0004" x="1" y="1" width="395" height="888" frameX="-4" frameY="-0" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0005" x="1" y="892" width="395" height="885" frameX="-4" frameY="-0" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0006" x="1" y="1780" width="395" height="644" frameX="-4" frameY="-241" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0007" x="1" y="5913" width="405" height="345" frameX="-0" frameY="-541" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0008" x="1" y="6261" width="405" height="345" frameX="-0" frameY="-541" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0009" x="1" y="5109" width="395" height="399" frameX="-4" frameY="-486" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0010" x="1" y="5511" width="395" height="399" frameX="-4" frameY="-486" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0011" x="1" y="4269" width="395" height="417" frameX="-4" frameY="-468" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0012" x="1" y="4689" width="395" height="417" frameX="-4" frameY="-468" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0013" x="1" y="2427" width="395" height="458" frameX="-4" frameY="-427" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0014" x="1" y="2888" width="395" height="458" frameX="-4" frameY="-427" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0015" x="1" y="3349" width="395" height="457" frameX="-4" frameY="-428" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0016" x="1" y="3809" width="395" height="457" frameX="-4" frameY="-428" frameWidth="405" frameHeight="1009"/>
+	<SubTexture name="boyfriend dj intro0017" x="1" y="3809" width="395" height="457" frameX="-4" frameY="-428" frameWidth="405" frameHeight="1009"/>
+</TextureAtlas>

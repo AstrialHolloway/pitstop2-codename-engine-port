@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Senpai Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 158,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

@@ -1,0 +1,20 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai-angry",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Roses",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"variants": [
+		"pico",
+		"erect"
+	],
+	"bpm": 120
+}

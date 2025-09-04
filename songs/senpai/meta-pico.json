@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Senpai (Pico Mix)",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 144,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}

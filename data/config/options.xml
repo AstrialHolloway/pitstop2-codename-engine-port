@@ -1,0 +1,5 @@
+<menu name="Pitstop 2 Options" desc="Options for the Pitstop 2 mod">
+
+    <checkbox id="devAccess" name="Developer Access" desc="Toggle the ability to access the dev stats"/>
+
+</menu>

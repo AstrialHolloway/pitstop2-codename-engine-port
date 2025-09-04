@@ -1,0 +1,17 @@
+<!DOCTYPE codename-engine-character>
+<character color="#725EB0">
+	<anim name="idle" anim="Idle"/>
+	<anim name="singDOWN" anim="Pose Down"/>
+	<anim name="singRIGHT" anim="Pose Right"/>
+	<anim name="singLEFT" anim="Pose Left"/>
+	<anim name="singUP" anim="Pose Up"/>
+	<anim name="Laugh" anim="Laugh"/>
+	<anim name="Kick Up" anim="Kick Up"/>
+	<anim name="Light Can" anim="Light Can"/>
+	<anim name="Gets Pissed" anim="Gets Pissed"/>
+	<anim name="Knee Forward" anim="Knee Forward"/>
+	<anim name="Up Flame Loop" anim="Up Flame Loop"/>
+	<anim name="Left Flame Loop" anim="Left Flame Loop"/>
+	<anim name="Down Flame Loop" anim="Down Flame Loop"/>
+	<anim name="Right Flame Loop" anim="Right Flame Loop"/>
+</character>

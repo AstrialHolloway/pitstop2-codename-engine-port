@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "darnell",
+	"difficulties": [
+		"Erect",
+		"Nightmare"
+	],
+	"color": "#725EB0",
+	"coopAllowed": false,
+	"stepsPerBeat": 2,
+	"displayName": "Darnell Erect",
+	"needsVoices": true,
+	"beatsPerMeasure": 6,
+	"bpm": 155,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

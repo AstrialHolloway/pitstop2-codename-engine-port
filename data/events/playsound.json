@@ -1,0 +1,19 @@
+{
+    "params": [
+        {
+            "name": "Sound File Path",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "Volume",
+            "type": "Float(0, 1, 0.1, 2)",
+            "defaultValue": "1"
+        },
+        {
+            "name": "Looped",
+            "type": "Bool",
+            "defaultValue": "false"
+        }
+    ]
+}

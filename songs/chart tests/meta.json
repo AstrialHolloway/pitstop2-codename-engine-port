@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"Test"
+	],
+	"color": "#88C516",
+	"coopAllowed": false,
+	"stepsPerBeat": 2,
+	"displayName": "STORM",
+	"needsVoices": true,
+	"beatsPerMeasure": 6,
+	"variants": [
+		"Roaches"
+	],
+	"bpm": 120
+}

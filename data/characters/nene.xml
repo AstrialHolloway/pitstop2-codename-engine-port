@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<!-- Made with WizardMantis's Character Converter on https://codename-engine.com/ -->
+<character sprite="Nene" icon="nene" color="#E45A77" y="200" camx="-150" camy="100" holdTime="6.1">
+	<anim name="danceLeft" anim="Idle" indices="0..14"/>
+	<anim name="danceRight" anim="Idle" indices="15..29"/>
+	<anim name="combo50" anim="ComboCheer" x="-119" y="55"/>
+	<anim name="laughCutscene" anim="Laugh0" x="17" y="-5" indices="0..11,7..11,7..11,7..11,7..11,7..11"/>
+	<anim name="combo100" anim="ComboFawn0" x="-41" y="-15" indices="0..6,4..6,4..6,4..6"/>
+	<anim name="raiseKnife" anim="KnifeRaise0" x="0" y="52"/>
+	<anim name="idleKnife" anim="KnifeIdle0" x="-99" y="52"/>
+	<anim name="lowerKnife" anim="KnifeLower0" x="134" y="52"/>
+	<anim name="hairBlow" anim="HairBlow0" loop="true" indices="0..3"/>
+	<anim name="hairFall" anim="HairBlow0" indices="0..16"/>
+</character>
