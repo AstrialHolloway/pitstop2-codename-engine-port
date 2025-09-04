@@ -2,7 +2,8 @@
     <category name="PITSTOP 2 CONTROLS">
         <control name="charSelect" saveName="charSelect" menuName="Selector" keyP1="TAB" keyP2="" menuIcon="menus/options/bfpixel"/>
         <control name="debugStats" saveName="debugStats" menuName="DevStats" keyP1="8" keyP2="" menuIcon="menus/options/debugOptions"/>
-        <control name="resultsPicker" saveName="resultsPicker" menuName="ResPicker" keyP1="B" keyP2="" menuIcon="menus/options/debugOptions"/>
+        <control name="resultsPicker" saveName="resultsPicker" menuName="ResPicker" keyP1="B" keyP2="" menuIcon="menus/options/rankbadges"/>
+        <control name="favoriteSong" saveName="favoriteSong" menuName="Favorite" keyP1="F" keyP2="" menuIcon="menus/options/favHeart"/>
         <control name="categoryLeft" saveName="categoryLeft" menuName="CatLeft" keyP1="Q" keyP2="" menuIcon="game/notes/default" menuAnim="purple0"/>
         <control name="categoryRight" saveName="categoryRight" menuName="CatRight" keyP1="E" keyP2="" menuIcon="game/notes/default" menuAnim="red0"/>
     </category>
