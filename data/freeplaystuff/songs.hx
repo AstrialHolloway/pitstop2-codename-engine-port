@@ -1,5 +1,9 @@
 package;
 
+var bfHasErect:Bool = true;
+var picoHasErect:Bool = true;
+// add more chars below if you want to add more characters
+// var HasErect:Bool = true;
 
 // Put songs here that you want to use in your freeplay menu 
 // (INCLUDE RANDOM AS FIRST IN LIST)
@@ -87,7 +91,7 @@ var songListPico:Array<String> =
     //add extra pico songs below (put a comma after each one exept the last)
 ];
 
-var songErectList:Array<String> =
+var songErectListPico:Array<String> =
 [
     "random",
     "darnell"//,
@@ -881,13 +885,3 @@ var songColorsPico:Array<String> =
     0x8a91f2, //(static blue color)  
 ];
 
-// -------------------------
-// temp songs
-// -------------------------
-
-// the song that plays if there is a song error (as in the inst does not exist)
-
-var songTemp:Array<String> =
-[
-    "girlfriendsRingtone.ogg"
-];

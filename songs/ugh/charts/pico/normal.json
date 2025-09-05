@@ -85,6 +85,7 @@
 			"name": "Camera Movement"
 		}
 	],
+	"codenameChart": true,
 	"strumLines": [
 		{
 			"keyCount": 4,
@@ -2208,11 +2209,13 @@
 			"strumLinePos": 0.25,
 			"type": 0,
 			"characters": [
-				"tankman"
+				"tankmanpico"
 			]
 		},
 		{
 			"keyCount": 4,
+			"strumScale": 1,
+			"position": "boyfriend",
 			"notes": [
 				{
 					"id": 2,
@@ -4279,35 +4282,32 @@
 					"type": 0
 				}
 			],
+			"characters": [
+				"pico-playable"
+			],
+			"type": 1,
 			"visible": true,
 			"strumSpacing": 1,
 			"strumPos": [
 				0,
 				50
 			],
-			"position": "boyfriend",
-			"strumScale": 1,
-			"vocalsSuffix": "-Player-Pico",
 			"strumLinePos": 0.75,
-			"type": 1,
-			"characters": [
-				"pico-playable"
-			]
+			"vocalsSuffix": "-Player-Pico"
 		},
 		{
 			"keyCount": 4,
-			"notes": [],
-			"visible": false,
 			"position": "girlfriend",
-			"type": 2,
+			"notes": [],
 			"characters": [
 				"nene"
-			]
+			],
+			"type": 2,
+			"visible": false
 		}
 	],
-	"codenameChart": true,
 	"scrollSpeed": 2.6,
 	"chartVersion": "1.6.0",
-	"stage": "tankmanBattlefieldErect",
+	"stage": "tankmanBattlefieldPico",
 	"noteTypes": []
 }

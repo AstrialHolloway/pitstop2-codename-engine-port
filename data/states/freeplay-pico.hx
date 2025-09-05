@@ -4,11 +4,17 @@ import funkin.savedata.FunkinSave;
 
 package funkin.savedata;
 
+package funkin.options;
 
+var allowDebug = FlxG.save.data.devAccess;
+
+trace(allowDebug);
+
+var curAccuracy = 0;
 
 var remix = false;
 
-var addonthing = "";
+var addonthing = "-pico";
 
 var debugthingy = true;
 
@@ -26,11 +32,15 @@ var basicRand = 1;
 
 var erectRand = 1;
 
-var devmode = true;
+var devmode = false;
 
-uiOffset = -14;
+var uiOffset = -14;
 
+var iconSprite:FunkinSprite;
 
+// -------------------------
+// songs
+// -------------------------
 
 var songList:Array<String> =
 [
@@ -53,8 +63,19 @@ var songList:Array<String> =
     "darnell",
     "lit-up",
     "2hot",
-    "blazin"
+    "blazin"//,
+    //add extra pico songs below (put a comma after each one exept the last)
 ];
+
+var songErectList:Array<String> =
+[
+    "random",
+    "darnell"//,
+    //add extra erect pico songs below (put a comma after each one exept the last)
+];
+// -------------------------
+// song OSTs
+// -------------------------
 
 var songOSTList:Array<String> =
 [
@@ -77,13 +98,139 @@ var songOSTList:Array<String> =
     "volume3",
     "volume3",
     "volume3",
-    "volume3"
+    "volume3"//,
+    //add albums below (put a comma after each one exept the last)
+
 ];
 
-var songTemp:Array<String> =
+var songErectOSTList:Array<String> =
 [
-    "girlfriendsRingtone.ogg"
+    "random",
+    "expansion2"//,
+    //add albums below (put a comma after each one exept the last)
+
 ];
+
+// -------------------------
+// song diffs
+// -------------------------
+
+var songDiffEasyList:Array<String> =
+[
+    //Random
+    "0",
+    //week1
+    "1", 
+    "2", 
+    "3", 
+    //week2
+    "1", 
+    "2",
+    //week3
+    "2",
+    "2",
+    "3",
+    //week5
+    "2",
+    "3",
+    //week6
+    "1",
+    "2",
+    //week7
+    "2",
+    "3",
+    "4",
+    //weekend1
+    "2",
+    "2",
+    "3",
+    "3"//,
+    //add extra norm diff numbers below (put a comma after each one exept the last)
+];
+
+var songDiffNormList:Array<String> =
+[
+    //Random
+    "0",
+    //week1
+    "2", 
+    "3", 
+    "4", 
+    //week2
+    "2", 
+    "3",
+    //week3
+    "3",
+    "3",
+    "4",
+    //week5
+    "3",
+    "4",
+    //week6
+    "2",
+    "3",
+    //week7
+    "3",
+    "4",
+    "5",
+    //weekend1
+    "3",
+    "3",
+    "4",
+    "4"//,
+    //add extra norm diff numbers below (put a comma after each one exept the last)
+];
+
+var songDiffHardList:Array<String> =
+[
+    //Random
+    "0",
+    //week1
+    "3", 
+    "4", 
+    "5", 
+    //week2
+    "3", 
+    "4",
+    //week3
+    "4",
+    "4",
+    "5",
+    //week5
+    "4",
+    "5",
+    //week6
+    "3",
+    "4",
+    //week7
+    "4",
+    "5",
+    "6",
+    //weekend1
+    "4",
+    "4",
+    "5",
+    "5"//,
+    //add extra norm diff numbers below (put a comma after each one exept the last)
+];
+
+var songDiffErectList:Array<String> =
+[
+    "0",
+    //weekend1
+    "8"
+];
+
+var songDiffNightList:Array<String> =
+[
+    "0",
+    //weekend1
+    "9"
+];
+
+// -------------------------
+// display lists
+// -------------------------
 
 var displayList:Array<String> =
 [
@@ -106,42 +253,54 @@ var displayList:Array<String> =
     "Darnell",
     "Lit-Up",
     "2Hot",
-    "Blazin'"
+    "Blazin'"//,
+    //add extra pico song display names below (put a comma after each one exept the last)
 ];
+
+var displayErectList:Array<String> =
+[
+    "Random", 
+    "Darnell Erect"//,
+    //add extra erect pico song display names below (put a comma after each one exept the last)
+];
+
+// -------------------------
+// week lists
+// -------------------------
 
 var weekList:Array<String> = 
 [
-    "",
-    "WEEK 0", 
-    "WEEK 1", 
-    "WEEK 1", 
-    "WEEK 1", 
-    "WEEK 2", 
-    "WEEK 2", 
-    "WEEK 2",
-    "WEEK 3",
-    "WEEK 3",
-    "WEEK 3",
-    "WEEK 4",
-    "WEEK 4",
-    "WEEK 4",
-    "WEEK 5",
-    "WEEK 5",
-    "WEEK 5",
-    "WEEK 6",
-    "WEEK 6",
-    "WEEK 6",
-    "WEEK 7",
-    "WEEK 7",
-    "WEEK 7",
-    "WEEKEND 1",
-    "WEEKEND 1"
+    "0", 
+    "1", 
+    "1", 
+    "1", 
+    "2", 
+    "2",
+    "3",
+    "3",
+    "3",
+    "5",
+    "5",
+    "6",
+    "6",
+    "7",
+    "7",
+    "7",
+    "1",
+    "1",
+    "1",
+    "1"
 ];
 
-var songColors:Array<String> = 
+var weekErectList:Array<String> = 
 [
-    0x8a91f2,    
+    "0",
+    "1"
 ];
+
+// -------------------------
+// bpm lists
+// -------------------------
 
 var bpmList:Array<String> = 
 [
@@ -162,19 +321,22 @@ var bpmList:Array<String> =
     185,
     178,
     155,
-    175,
+    176,
     182,
-    100
+    180//,
+    //add extra pico song bpms below (put a comma after each one exept the last)
 ];
 
-var diffList:Array<String> = 
+var bpmErectList:Array<String> = 
 [
-    "easy",
-    "normal", 
-    "hard", 
-    "erect",
-    "nightmare"
+    145,
+    155//,
+    //add extra erect pico song bpms below (put a comma after each one exept the last)
 ];
+
+// -------------------------
+// icons
+// -------------------------
 
 var icons:Array<String> = 
 [
@@ -197,58 +359,85 @@ var icons:Array<String> =
     "menus/freeplay/icons/darnellpixel",
     "menus/freeplay/icons/darnellpixel",
     "menus/freeplay/icons/darnellpixel",
-    "menus/freeplay/icons/darnellpixel"
-];
-
-var songErectList:Array<String> =
-[
-    "random",
-    "darnell"
-];
-
-var songErectOSTList:Array<String> =
-[
-    "random",
-    "expansion2"
-];
-
-var displayErectList:Array<String> =
-[
-    "Random", 
-    "Darnell Erect"
-];
-
-var bpmErectList:Array<String> = 
-[
-    145,
-    155
+    "menus/freeplay/icons/darnellpixel"//,
+    //add extra icons below (put a comma after each one exept the last)
 ];
 
 var iconsErect:Array<String> = 
-[
+[    
     "menus/freeplay/icons/randompixel",
-    "menus/freeplay/icons/darnellpixel"
+    "menus/freeplay/icons/darnellpixel"//,
+    //add extra erect icons below (put a comma after each one exept the last)
 ];
 
-var iconSprite:FunkinSprite;
+// -------------------------
+// temp songs
+// -------------------------
 
+var songTemp:Array<String> =
+[
+    "girlfriendsRingtone.ogg"
+];
 
+// -------------------------
+// bg colors
+// -------------------------
 
+var songColors:Array<String> = 
+[
+    0x8a91f2,    
+];
+
+// -------------------------
+// diff list
+// -------------------------
+
+var diffList:Array<String> = 
+[
+    "easy",
+    "normal", 
+    "hard", 
+    "erect",
+    "nightmare"
+];
+
+// -------------------------
+// categories
+// -------------------------
+
+var categories:Array<String> =
+[
+    "ALL",
+    "AB", 
+    "CD", 
+    "EH", 
+    "IL", 
+    "MN", 
+    "OR", 
+    "S", 
+    "T",
+    "UZ",
+    "NUM",
+    "FAV"//,
+    //add extra categories below (put a comma after each one exept the last)
+];
+
+// -------------------------
+// assets
+// -------------------------
 
 // -------------------------
 // Background
 // -------------------------
 
-var dadSprite:FunkinSprite = new FunkinSprite(550, 120 + uiOffset);
-dadSprite.loadGraphic(Paths.image("menus/freeplay/freeplayBGdadpico"));
+var dadSprite:FunkinSprite = new FunkinSprite(550, 115 + uiOffset);
+dadSprite.loadGraphic(Paths.image("menus/freeplay/freeplayBGdadPico"));
 dadSprite.scale.set(1.4, 1.4);
 add(dadSprite);
 
-
-
 var cardGlowSprite:FunkinSprite = new FunkinSprite(-10, -25 + uiOffset);
 cardGlowSprite.loadGraphic(Paths.image("menus/freeplay/pinkBack"));
-cardGlowSprite.color = songColors[0]; // red overlay (ARGB)
+cardGlowSprite.color = 0x8a91f2; // red overlay (ARGB)
 add(cardGlowSprite);
 
 // -------------------------
@@ -261,8 +450,6 @@ albumCover.scale.set(1,1);
 albumCover.angle = 10.2;
 add(albumCover);
 
-
-
 var albumText:FunkinSprite = new FunkinSprite(925, 500 + uiOffset);
 albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
 albumText.animation.addByPrefix("idle", "idle", 24, true);
@@ -271,9 +458,6 @@ albumText.animation.play("idle");
 albumText.scale.set(1,1);
 add(albumText);
 
-
-
-
 // -------------------------
 // Freeplay UI
 // -------------------------
@@ -281,8 +465,6 @@ add(albumText);
 // -------------------------
 // Freeplay Diffs
 // -------------------------
-
-
 
 var arrowLeftDiff:FunkinSprite = new FunkinSprite(20,70 + uiOffset);
 arrowLeftDiff.frames = Paths.getSparrowAtlas("menus/freeplay/freeplaySelector/freeplaySelector_pico");
@@ -312,7 +494,6 @@ add(diffNightSprite);
 var easySelector:FunkinSprite = new FunkinSprite(125, 170 + uiOffset);
 easySelector.loadGraphic(Paths.image("menus/freeplay/seperator"));
 easySelector.color = 0x575757;
-
 add(easySelector);
 
 var normSelector:FunkinSprite = new FunkinSprite(155, 170 + uiOffset);
@@ -329,7 +510,6 @@ var erectSelector:FunkinSprite = new FunkinSprite(215, 170 + uiOffset);
 erectSelector.loadGraphic(Paths.image("menus/freeplay/seperator"));
 erectSelector.color = 0x34296a;
 erectSelector.alpha = 0.3;
-
 add(erectSelector);
 
 var nightSelector:FunkinSprite = new FunkinSprite(245, 170 + uiOffset);
@@ -338,22 +518,18 @@ nightSelector.color = 0x34296a;
 nightSelector.alpha = 0.3;
 add(nightSelector);
 
-
-
 // -------------------------
 // Freeplay Char
 // -------------------------
 
 // anything between this comment and the next is from V-Slice-in-Codename-Engine on github so credits to them! (https://github.com/NebulaStellaNova/V-Slice-in-Codename-Engine/tree/main)
-
 var menuData;
 
-static var currentCharacter:String = "pico";//"pico";
+static var currentCharacter:String = "pico";
 
 menuData = CoolUtil.parseJson("data/config/freeplayCharacters/"+currentCharacter+".json");
-    
 
-dj = new FunkinSprite(menuData.dj.position[0], menuData.dj.position[1]);
+dj = new FunkinSprite(menuData.dj.position[0]-15, menuData.dj.position[1]+10);
 dj.loadSprite(Paths.image("menus/freeplay/djs/" + menuData.dj.assetPath));
 dj.animation.addByPrefix('intro', menuData.dj.animations.intro.prefix, menuData.dj.animations.intro.frameRate ?? 24, false);
 dj.animation.addByPrefix('idle', menuData.dj.animations.idle.prefix, menuData.dj.animations.idle.frameRate ?? 24, true);
@@ -365,11 +541,9 @@ dj.addOffset('intro', -menuData.dj.animations.intro.offsets[0], -menuData.dj.ani
 dj.addOffset('confirm', -menuData.dj.animations.confirm.offsets[0], -menuData.dj.animations.confirm.offsets[1]);
 dj.antialiasing = true;
 dj.updateHitbox();
-add(dj);
-    
-
-// end
 dj.playAnim('intro', true);
+add(dj);
+// end
 
 // -------------------------
 // Freeplay Capsules
@@ -378,7 +552,7 @@ dj.playAnim('intro', true);
 // Capsules
 
 var freeplayCapsulePrior:FunkinSprite = new FunkinSprite(275, 120 + uiOffset);
-freeplayCapsulePrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule");
+freeplayCapsulePrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule_pico");
 freeplayCapsulePrior.animation.addByPrefix("Basic", "basic", 24, true);
 freeplayCapsulePrior.animation.addByPrefix("Selected", "sel", 24, true);
 freeplayCapsulePrior.animation.play("Basic");
@@ -386,7 +560,7 @@ freeplayCapsulePrior.scale.set(0.8, 0.8);
 add(freeplayCapsulePrior);
 
 var freeplayCapsuleNext:FunkinSprite = new FunkinSprite(330, 352 + uiOffset);
-freeplayCapsuleNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule");
+freeplayCapsuleNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule_pico");
 freeplayCapsuleNext.animation.addByPrefix("Basic", "basic", 24, true);
 freeplayCapsuleNext.animation.addByPrefix("Selected", "sel", 24, true);
 freeplayCapsuleNext.animation.play("Basic");
@@ -394,7 +568,7 @@ freeplayCapsuleNext.scale.set(0.8, 0.8);
 add(freeplayCapsuleNext);
 
 var freeplayCapsuleNext1:FunkinSprite = new FunkinSprite(283.5, 467 + uiOffset);
-freeplayCapsuleNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule");
+freeplayCapsuleNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule_pico");
 freeplayCapsuleNext1.animation.addByPrefix("Basic", "basic", 24, true);
 freeplayCapsuleNext1.animation.addByPrefix("Selected", "sel", 24, true);
 freeplayCapsuleNext1.animation.play("Basic");
@@ -402,7 +576,7 @@ freeplayCapsuleNext1.scale.set(0.8, 0.8);
 add(freeplayCapsuleNext1);
 
 var freeplayCapsuleNext2:FunkinSprite = new FunkinSprite(230, 582 + uiOffset);
-freeplayCapsuleNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule");
+freeplayCapsuleNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule_pico");
 freeplayCapsuleNext2.animation.addByPrefix("Basic", "basic", 24, true);
 freeplayCapsuleNext2.animation.addByPrefix("Selected", "sel", 24, true);
 freeplayCapsuleNext2.animation.play("Basic");
@@ -410,7 +584,7 @@ freeplayCapsuleNext2.scale.set(0.8, 0.8);
 add(freeplayCapsuleNext2);
 
 var freeplayCapsule:FunkinSprite = new FunkinSprite(320, 236 + uiOffset);
-freeplayCapsule.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule");
+freeplayCapsule.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/capsule/freeplayCapsule_pico");
 freeplayCapsule.animation.addByPrefix("Basic", "basic", 24, true);
 freeplayCapsule.animation.addByPrefix("Selected", "sel", 24, true);
 freeplayCapsule.animation.play("Selected");
@@ -442,56 +616,660 @@ add(curSongLabel);
 // Icons
 
 var curIcon:FunkinSprite = new FunkinSprite(405, 271 + uiOffset);
-curIcon.frames = Paths.getSparrowAtlas(icons[index]);
+curIcon.frames = Paths.getSparrowAtlas(icons[index] ?? icons[0]);
 curIcon.animation.addByPrefix("Idle", "idle", 24, true);
 curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
 curIcon.animation.addByPrefix("Hold", "hold", 24, true);
 curIcon.animation.play("Idle");
 curIcon.scale.set(2, 2);
+curIcon.antialiasing = false;
 add(curIcon);
 
 var IconPrior:FunkinSprite = new FunkinSprite(354.5, 155 + uiOffset);
-IconPrior.frames = Paths.getSparrowAtlas(icons[index-1]);
+IconPrior.frames = Paths.getSparrowAtlas(icons[index-1] ?? icons[0]);
 IconPrior.animation.addByPrefix("Idle", "idle", 24, true);
 IconPrior.animation.addByPrefix("Confirm", "confirm", 10, false);
 IconPrior.animation.addByPrefix("Hold", "hold", 24, true);
 IconPrior.animation.play("Idle");
 IconPrior.scale.set(2, 2);
+IconPrior.antialiasing = false;
 add(IconPrior);
 
 var IconNext:FunkinSprite = new FunkinSprite(409.5, 386.5 + uiOffset);
-IconNext.frames = Paths.getSparrowAtlas(icons[index+1]);
+IconNext.frames = Paths.getSparrowAtlas(icons[index+1] ?? icons[0]);
 IconNext.animation.addByPrefix("Idle", "idle", 24, true);
 IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
 IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 IconNext.animation.play("Idle");
 IconNext.scale.set(2, 2);
+IconNext.antialiasing = false;
 add(IconNext);
 
 var IconNext1:FunkinSprite = new FunkinSprite(363, 502 + uiOffset);
-IconNext1.frames = Paths.getSparrowAtlas(icons[index+2]);
+IconNext1.frames = Paths.getSparrowAtlas(icons[index+2] ?? icons[0]);
 IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
 IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
 IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 IconNext1.animation.play("Idle");
 IconNext1.scale.set(2, 2);
+IconNext1.antialiasing = false;
 add(IconNext1);
 
 var IconNext2:FunkinSprite = new FunkinSprite(310, 617 + uiOffset);
-IconNext2.frames = Paths.getSparrowAtlas(icons[index+3]);
+IconNext2.frames = Paths.getSparrowAtlas(icons[index+3] ?? icons[0]);
 IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
 IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
 IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
 IconNext2.animation.play("Idle");
 IconNext2.scale.set(2, 2);
+IconNext2.antialiasing = false;
 add(IconNext2);
+
+// song diff
+
+var diffPrior:FunkinSprite = new FunkinSprite(685, 208 + uiOffset);
+diffPrior.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/difficultytext"));
+diffPrior.scale.set(0.9,0.9);
+add(diffPrior);
+
+var diffCur:FunkinSprite = new FunkinSprite(735, 325 + uiOffset);
+diffCur.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/difficultytext"));
+diffCur.scale.set(0.9,0.9);
+add(diffCur);
+
+var diffNext:FunkinSprite = new FunkinSprite(740, 440 + uiOffset);
+diffNext.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/difficultytext"));
+diffNext.scale.set(0.9,0.9);
+add(diffNext);
+
+var diffNext1:FunkinSprite = new FunkinSprite(690, 555 + uiOffset);
+diffNext1.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/difficultytext"));
+diffNext1.scale.set(0.9,0.9);
+add(diffNext1);
+
+var diffNext2:FunkinSprite = new FunkinSprite(640, 670 + uiOffset);
+diffNext2.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/difficultytext"));
+diffNext2.scale.set(0.9,0.9);
+add(diffNext2);
+
+// song bpm
+
+var bpmPrior:FunkinSprite = new FunkinSprite(410, 208 + uiOffset);
+bpmPrior.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/bpmtext"));
+bpmPrior.scale.set(0.9,0.9);
+add(bpmPrior);
+
+var bpmCur:FunkinSprite = new FunkinSprite(460, 325 + uiOffset);
+bpmCur.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/bpmtext"));
+bpmCur.scale.set(0.9,0.9);
+add(bpmCur);
+
+var bpmNext:FunkinSprite = new FunkinSprite(465, 440 + uiOffset);
+bpmNext.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/bpmtext"));
+bpmNext.scale.set(0.9,0.9);
+add(bpmNext);
+
+var bpmNext1:FunkinSprite = new FunkinSprite(420, 555 + uiOffset);
+bpmNext1.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/bpmtext"));
+bpmNext1.scale.set(0.9,0.9);
+add(bpmNext1);
+
+var bpmNext2:FunkinSprite = new FunkinSprite(365, 670 + uiOffset);
+bpmNext2.loadGraphic(Paths.image("menus/freeplay/freeplayCapsule/bpmtext"));
+bpmNext2.scale.set(0.9,0.9);
+add(bpmNext2);
+
+// week/weekend
+
+var weekLabelPrior:FunkinSprite = new FunkinSprite(555, 208 + uiOffset);
+weekLabelPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/weektypes");
+weekLabelPrior.animation.addByPrefix("week", "WEEK text instance 1", 1, true);
+weekLabelPrior.animation.addByPrefix("weekend", "WEEKEND text instance 1", 1, false);
+weekLabelPrior.animation.play("week");
+weekLabelPrior.scale.set(0.9, 0.9);
+add(weekLabelPrior);
+
+var weekLabelNext:FunkinSprite = new FunkinSprite(610, 440 + uiOffset);
+weekLabelNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/weektypes");
+weekLabelNext.animation.addByPrefix("week", "WEEK text instance 1", 1, true);
+weekLabelNext.animation.addByPrefix("weekend", "WEEKEND text instance 1", 1, false);
+weekLabelNext.animation.play("week");
+weekLabelNext.scale.set(0.9, 0.9);
+add(weekLabelNext);
+
+var weekLabelNext1:FunkinSprite = new FunkinSprite(560, 555 + uiOffset);
+weekLabelNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/weektypes");
+weekLabelNext1.animation.addByPrefix("week", "WEEK text instance 1", 1, true);
+weekLabelNext1.animation.addByPrefix("weekend", "WEEKEND text instance 1", 1, false);
+weekLabelNext1.animation.play("week");
+weekLabelNext1.scale.set(0.9, 0.9);
+add(weekLabelNext1);
+
+var weekLabelNext2:FunkinSprite = new FunkinSprite(510, 670 + uiOffset);
+weekLabelNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/weektypes");
+weekLabelNext2.animation.addByPrefix("week", "WEEK text instance 1", 1, true);
+weekLabelNext2.animation.addByPrefix("weekend", "WEEKEND text instance 1", 1, false);
+weekLabelNext2.animation.play("week");
+weekLabelNext2.scale.set(0.9, 0.9);
+add(weekLabelNext2);
+
+var weekLabelCur:FunkinSprite = new FunkinSprite(605, 325 + uiOffset);
+weekLabelCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/weektypes");
+weekLabelCur.animation.addByPrefix("week", "WEEK text instance 1", 1, true);
+weekLabelCur.animation.addByPrefix("weekend", "WEEKEND text instance 1", 1, false);
+weekLabelCur.animation.play("week");
+weekLabelCur.scale.set(0.9, 0.9);
+add(weekLabelCur);
+
+
+// digits tens
+
+var digitsOffsettensX = 49;
+var digitsOffsettensY = -60;
+
+var tensPrior:FunkinSprite = new FunkinSprite(685 + digitsOffsettensX, 208 + digitsOffsettensY + uiOffset);
+tensPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+tensPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+tensPrior.animation.addByPrefix("one", "ONE", 1, true);
+tensPrior.animation.addByPrefix("two", "TWO", 1, true);
+tensPrior.animation.addByPrefix("three", "THREE", 1, true);
+tensPrior.animation.addByPrefix("four", "FOUR", 1, true);
+tensPrior.animation.addByPrefix("five", "FIVE", 1, true);
+tensPrior.animation.addByPrefix("six", "SIX", 1, true);
+tensPrior.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensPrior.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensPrior.animation.addByPrefix("nine", "NINE", 1, true);
+tensPrior.animation.play("zero");
+tensPrior.scale.set(0.9, 0.9);
+add(tensPrior);
+
+var tensNext:FunkinSprite = new FunkinSprite(742 + digitsOffsettensX, 440 + digitsOffsettensY  + uiOffset);
+tensNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+tensNext.animation.addByPrefix("zero", "ZERO", 1, true);
+tensNext.animation.addByPrefix("one", "ONE", 1, true);
+tensNext.animation.addByPrefix("two", "TWO", 1, true);
+tensNext.animation.addByPrefix("three", "THREE", 1, true);
+tensNext.animation.addByPrefix("four", "FOUR", 1, true);
+tensNext.animation.addByPrefix("five", "FIVE", 1, true);
+tensNext.animation.addByPrefix("six", "SIX", 1, true);
+tensNext.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensNext.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensNext.animation.addByPrefix("nine", "NINE", 1, true);
+tensNext.animation.play("zero");
+tensNext.scale.set(0.9, 0.9);
+add(tensNext);
+
+var tensNext1:FunkinSprite = new FunkinSprite(695 + digitsOffsettensX,   555 + digitsOffsettensY + uiOffset);
+tensNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+tensNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+tensNext1.animation.addByPrefix("one", "ONE", 1, true);
+tensNext1.animation.addByPrefix("two", "TWO", 1, true);
+tensNext1.animation.addByPrefix("three", "THREE", 1, true);
+tensNext1.animation.addByPrefix("four", "FOUR", 1, true);
+tensNext1.animation.addByPrefix("five", "FIVE", 1, true);
+tensNext1.animation.addByPrefix("six", "SIX", 1, true);
+tensNext1.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensNext1.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensNext1.animation.addByPrefix("nine", "NINE", 1, true);
+tensNext1.animation.play("zero");
+tensNext1.scale.set(0.9, 0.9);
+add(tensNext1);
+
+var tensNext2:FunkinSprite = new FunkinSprite(640 + digitsOffsettensX,  670  + digitsOffsettensY + uiOffset);
+tensNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+tensNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+tensNext2.animation.addByPrefix("one", "ONE", 1, true);
+tensNext2.animation.addByPrefix("two", "TWO", 1, true);
+tensNext2.animation.addByPrefix("three", "THREE", 1, true);
+tensNext2.animation.addByPrefix("four", "FOUR", 1, true);
+tensNext2.animation.addByPrefix("five", "FIVE", 1, true);
+tensNext2.animation.addByPrefix("six", "SIX", 1, true);
+tensNext2.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensNext2.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensNext2.animation.addByPrefix("nine", "NINE", 1, true);
+tensNext2.animation.play("zero");
+tensNext2.scale.set(0.9, 0.9);
+add(tensNext2);
+
+var tensCur:FunkinSprite = new FunkinSprite(735 + digitsOffsettensX,  325 + digitsOffsettensY + uiOffset);
+tensCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+tensCur.animation.addByPrefix("zero", "ZERO", 1, true);
+tensCur.animation.addByPrefix("one", "ONE", 1, true);
+tensCur.animation.addByPrefix("two", "TWO", 1, true);
+tensCur.animation.addByPrefix("three", "THREE", 1, true);
+tensCur.animation.addByPrefix("four", "FOUR", 1, true);
+tensCur.animation.addByPrefix("five", "FIVE", 1, true);
+tensCur.animation.addByPrefix("six", "SIX", 1, true);
+tensCur.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensCur.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensCur.animation.addByPrefix("nine", "NINE", 1, true);
+tensCur.animation.play("zero");
+tensCur.scale.set(0.9, 0.9);
+add(tensCur);
+
+// digits ones
+
+var digitsOffsetonesX = 80;
+var digitsOffsetonesY = -60;
+
+var onesPrior:FunkinSprite = new FunkinSprite(685 + digitsOffsetonesX, 208 + digitsOffsetonesY + uiOffset);
+onesPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+onesPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+onesPrior.animation.addByPrefix("one", "ONE", 1, true);
+onesPrior.animation.addByPrefix("two", "TWO", 1, true);
+onesPrior.animation.addByPrefix("three", "THREE", 1, true);
+onesPrior.animation.addByPrefix("four", "FOUR", 1, true);
+onesPrior.animation.addByPrefix("five", "FIVE", 1, true);
+onesPrior.animation.addByPrefix("six", "SIX", 1, true);
+onesPrior.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesPrior.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesPrior.animation.addByPrefix("nine", "NINE", 1, true);
+onesPrior.animation.play("zero");
+onesPrior.scale.set(0.9, 0.9);
+add(onesPrior);
+
+var onesNext:FunkinSprite = new FunkinSprite(742 + digitsOffsetonesX, 440 + digitsOffsetonesY + uiOffset);
+onesNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+onesNext.animation.addByPrefix("zero", "ZERO", 1, true);
+onesNext.animation.addByPrefix("one", "ONE", 1, true);
+onesNext.animation.addByPrefix("two", "TWO", 1, true);
+onesNext.animation.addByPrefix("three", "THREE", 1, true);
+onesNext.animation.addByPrefix("four", "FOUR", 1, true);
+onesNext.animation.addByPrefix("five", "FIVE", 1, true);
+onesNext.animation.addByPrefix("six", "SIX", 1, true);
+onesNext.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesNext.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesNext.animation.addByPrefix("nine", "NINE", 1, true);
+onesNext.animation.play("zero");
+onesNext.scale.set(0.9, 0.9);
+add(onesNext);
+
+var onesNext1:FunkinSprite = new FunkinSprite(695 + digitsOffsetonesX, 555 + digitsOffsetonesY + uiOffset);
+onesNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+onesNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+onesNext1.animation.addByPrefix("one", "ONE", 1, true);
+onesNext1.animation.addByPrefix("two", "TWO", 1, true);
+onesNext1.animation.addByPrefix("three", "THREE", 1, true);
+onesNext1.animation.addByPrefix("four", "FOUR", 1, true);
+onesNext1.animation.addByPrefix("five", "FIVE", 1, true);
+onesNext1.animation.addByPrefix("six", "SIX", 1, true);
+onesNext1.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesNext1.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesNext1.animation.addByPrefix("nine", "NINE", 1, true);
+onesNext1.animation.play("zero");
+onesNext1.scale.set(0.9, 0.9);
+add(onesNext1);
+
+var onesNext2:FunkinSprite = new FunkinSprite(640 + digitsOffsetonesX, 670 + digitsOffsetonesY + uiOffset);
+onesNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+onesNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+onesNext2.animation.addByPrefix("one", "ONE", 1, true);
+onesNext2.animation.addByPrefix("two", "TWO", 1, true);
+onesNext2.animation.addByPrefix("three", "THREE", 1, true);
+onesNext2.animation.addByPrefix("four", "FOUR", 1, true);
+onesNext2.animation.addByPrefix("five", "FIVE", 1, true);
+onesNext2.animation.addByPrefix("six", "SIX", 1, true);
+onesNext2.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesNext2.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesNext2.animation.addByPrefix("nine", "NINE", 1, true);
+onesNext2.animation.play("zero");
+onesNext2.scale.set(0.9, 0.9);
+add(onesNext2);
+
+var onesCur:FunkinSprite = new FunkinSprite(735 + digitsOffsetonesX, 325 + digitsOffsetonesY + uiOffset);
+onesCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/bignumbers");
+onesCur.animation.addByPrefix("zero", "ZERO", 1, true);
+onesCur.animation.addByPrefix("one", "ONE", 1, true);
+onesCur.animation.addByPrefix("two", "TWO", 1, true);
+onesCur.animation.addByPrefix("three", "THREE", 1, true);
+onesCur.animation.addByPrefix("four", "FOUR", 1, true);
+onesCur.animation.addByPrefix("five", "FIVE", 1, true);
+onesCur.animation.addByPrefix("six", "SIX", 1, true);
+onesCur.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesCur.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesCur.animation.addByPrefix("nine", "NINE", 1, true);
+onesCur.animation.play("zero");
+onesCur.scale.set(0.9, 0.9);
+add(onesCur);
+
+// bpm numbers
+
+// bpm ones
+var onesBPMPrior:FunkinSprite = new FunkinSprite(478, 208 + uiOffset);
+onesBPMPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+onesBPMPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+onesBPMPrior.animation.addByPrefix("one", "ONE", 1, true);
+onesBPMPrior.animation.addByPrefix("two", "TWO", 1, true);
+onesBPMPrior.animation.addByPrefix("three", "THREE", 1, true);
+onesBPMPrior.animation.addByPrefix("four", "FOUR", 1, true);
+onesBPMPrior.animation.addByPrefix("five", "FIVE", 1, true);
+onesBPMPrior.animation.addByPrefix("six", "SIX", 1, true);
+onesBPMPrior.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesBPMPrior.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesBPMPrior.animation.addByPrefix("nine", "NINE", 1, true);
+onesBPMPrior.animation.play("zero");
+onesBPMPrior.scale.set(0.9, 0.9);
+add(onesBPMPrior);
+
+var onesBPMCur:FunkinSprite = new FunkinSprite(524, 325 + uiOffset);
+onesBPMCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+onesBPMCur.animation.addByPrefix("zero", "ZERO", 1, true);
+onesBPMCur.animation.addByPrefix("one", "ONE", 1, true);
+onesBPMCur.animation.addByPrefix("two", "TWO", 1, true);
+onesBPMCur.animation.addByPrefix("three", "THREE", 1, true);
+onesBPMCur.animation.addByPrefix("four", "FOUR", 1, true);
+onesBPMCur.animation.addByPrefix("five", "FIVE", 1, true);
+onesBPMCur.animation.addByPrefix("six", "SIX", 1, true);
+onesBPMCur.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesBPMCur.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesBPMCur.animation.addByPrefix("nine", "NINE", 1, true);
+onesBPMCur.animation.play("zero");
+onesBPMCur.scale.set(0.9, 0.9);
+add(onesBPMCur);
+
+var onesBPMNext:FunkinSprite = new FunkinSprite(528, 440 + uiOffset);
+onesBPMNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+onesBPMNext.animation.addByPrefix("zero", "ZERO", 1, true);
+onesBPMNext.animation.addByPrefix("one", "ONE", 1, true);
+onesBPMNext.animation.addByPrefix("two", "TWO", 1, true);
+onesBPMNext.animation.addByPrefix("three", "THREE", 1, true);
+onesBPMNext.animation.addByPrefix("four", "FOUR", 1, true);
+onesBPMNext.animation.addByPrefix("five", "FIVE", 1, true);
+onesBPMNext.animation.addByPrefix("six", "SIX", 1, true);
+onesBPMNext.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesBPMNext.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesBPMNext.animation.addByPrefix("nine", "NINE", 1, true);
+onesBPMNext.animation.play("zero");
+onesBPMNext.scale.set(0.9, 0.9);
+add(onesBPMNext);
+
+var onesBPMNext1:FunkinSprite = new FunkinSprite(485, 555 + uiOffset);
+onesBPMNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+onesBPMNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+onesBPMNext1.animation.addByPrefix("one", "ONE", 1, true);
+onesBPMNext1.animation.addByPrefix("two", "TWO", 1, true);
+onesBPMNext1.animation.addByPrefix("three", "THREE", 1, true);
+onesBPMNext1.animation.addByPrefix("four", "FOUR", 1, true);
+onesBPMNext1.animation.addByPrefix("five", "FIVE", 1, true);
+onesBPMNext1.animation.addByPrefix("six", "SIX", 1, true);
+onesBPMNext1.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesBPMNext1.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesBPMNext1.animation.addByPrefix("nine", "NINE", 1, true);
+onesBPMNext1.animation.play("zero");
+onesBPMNext1.scale.set(0.9, 0.9);
+add(onesBPMNext1);
+
+var onesBPMNext2:FunkinSprite = new FunkinSprite(430, 670 + uiOffset);
+onesBPMNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+onesBPMNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+onesBPMNext2.animation.addByPrefix("one", "ONE", 1, true);
+onesBPMNext2.animation.addByPrefix("two", "TWO", 1, true);
+onesBPMNext2.animation.addByPrefix("three", "THREE", 1, true);
+onesBPMNext2.animation.addByPrefix("four", "FOUR", 1, true);
+onesBPMNext2.animation.addByPrefix("five", "FIVE", 1, true);
+onesBPMNext2.animation.addByPrefix("six", "SIX", 1, true);
+onesBPMNext2.animation.addByPrefix("seven", "SEVEN", 1, true);
+onesBPMNext2.animation.addByPrefix("eight", "EIGHT", 1, true);
+onesBPMNext2.animation.addByPrefix("nine", "NINE", 1, true);
+onesBPMNext2.animation.play("zero");
+onesBPMNext2.scale.set(0.9, 0.9);
+add(onesBPMNext2);
+
+
+// bpm tens
+var tensBPMPrior:FunkinSprite = new FunkinSprite(465, 208 + uiOffset);
+tensBPMPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+tensBPMPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+tensBPMPrior.animation.addByPrefix("one", "ONE", 1, true);
+tensBPMPrior.animation.addByPrefix("two", "TWO", 1, true);
+tensBPMPrior.animation.addByPrefix("three", "THREE", 1, true);
+tensBPMPrior.animation.addByPrefix("four", "FOUR", 1, true);
+tensBPMPrior.animation.addByPrefix("five", "FIVE", 1, true);
+tensBPMPrior.animation.addByPrefix("six", "SIX", 1, true);
+tensBPMPrior.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensBPMPrior.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensBPMPrior.animation.addByPrefix("nine", "NINE", 1, true);
+tensBPMPrior.animation.play("zero");
+tensBPMPrior.scale.set(0.9, 0.9);
+add(tensBPMPrior);
+
+var tensBPMCur:FunkinSprite = new FunkinSprite(513, 325 + uiOffset);
+tensBPMCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+tensBPMCur.animation.addByPrefix("zero", "ZERO", 1, true);
+tensBPMCur.animation.addByPrefix("one", "ONE", 1, true);
+tensBPMCur.animation.addByPrefix("two", "TWO", 1, true);
+tensBPMCur.animation.addByPrefix("three", "THREE", 1, true);
+tensBPMCur.animation.addByPrefix("four", "FOUR", 1, true);
+tensBPMCur.animation.addByPrefix("five", "FIVE", 1, true);
+tensBPMCur.animation.addByPrefix("six", "SIX", 1, true);
+tensBPMCur.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensBPMCur.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensBPMCur.animation.addByPrefix("nine", "NINE", 1, true);
+tensBPMCur.animation.play("zero");
+tensBPMCur.scale.set(0.9, 0.9);
+add(tensBPMCur);
+
+var tensBPMNext:FunkinSprite = new FunkinSprite(516, 440 + uiOffset);
+tensBPMNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+tensBPMNext.animation.addByPrefix("zero", "ZERO", 1, true);
+tensBPMNext.animation.addByPrefix("one", "ONE", 1, true);
+tensBPMNext.animation.addByPrefix("two", "TWO", 1, true);
+tensBPMNext.animation.addByPrefix("three", "THREE", 1, true);
+tensBPMNext.animation.addByPrefix("four", "FOUR", 1, true);
+tensBPMNext.animation.addByPrefix("five", "FIVE", 1, true);
+tensBPMNext.animation.addByPrefix("six", "SIX", 1, true);
+tensBPMNext.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensBPMNext.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensBPMNext.animation.addByPrefix("nine", "NINE", 1, true);
+tensBPMNext.animation.play("zero");
+tensBPMNext.scale.set(0.9, 0.9);
+add(tensBPMNext);
+
+var tensBPMNext1:FunkinSprite = new FunkinSprite(473, 555 + uiOffset);
+tensBPMNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+tensBPMNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+tensBPMNext1.animation.addByPrefix("one", "ONE", 1, true);
+tensBPMNext1.animation.addByPrefix("two", "TWO", 1, true);
+tensBPMNext1.animation.addByPrefix("three", "THREE", 1, true);
+tensBPMNext1.animation.addByPrefix("four", "FOUR", 1, true);
+tensBPMNext1.animation.addByPrefix("five", "FIVE", 1, true);
+tensBPMNext1.animation.addByPrefix("six", "SIX", 1, true);
+tensBPMNext1.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensBPMNext1.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensBPMNext1.animation.addByPrefix("nine", "NINE", 1, true);
+tensBPMNext1.animation.play("zero");
+tensBPMNext1.scale.set(0.9, 0.9);
+add(tensBPMNext1);
+
+var tensBPMNext2:FunkinSprite = new FunkinSprite(418, 670 + uiOffset);
+tensBPMNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+tensBPMNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+tensBPMNext2.animation.addByPrefix("one", "ONE", 1, true);
+tensBPMNext2.animation.addByPrefix("two", "TWO", 1, true);
+tensBPMNext2.animation.addByPrefix("three", "THREE", 1, true);
+tensBPMNext2.animation.addByPrefix("four", "FOUR", 1, true);
+tensBPMNext2.animation.addByPrefix("five", "FIVE", 1, true);
+tensBPMNext2.animation.addByPrefix("six", "SIX", 1, true);
+tensBPMNext2.animation.addByPrefix("seven", "SEVEN", 1, true);
+tensBPMNext2.animation.addByPrefix("eight", "EIGHT", 1, true);
+tensBPMNext2.animation.addByPrefix("nine", "NINE", 1, true);
+tensBPMNext2.animation.play("zero");
+tensBPMNext2.scale.set(0.9, 0.9);
+add(tensBPMNext2);
+
+// bpm hunds
+var hundsBPMPrior:FunkinSprite = new FunkinSprite(455, 208 + uiOffset);
+hundsBPMPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+hundsBPMPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+hundsBPMPrior.animation.addByPrefix("one", "ONE", 1, true);
+hundsBPMPrior.animation.addByPrefix("two", "TWO", 1, true);
+hundsBPMPrior.animation.addByPrefix("three", "THREE", 1, true);
+hundsBPMPrior.animation.addByPrefix("four", "FOUR", 1, true);
+hundsBPMPrior.animation.addByPrefix("five", "FIVE", 1, true);
+hundsBPMPrior.animation.addByPrefix("six", "SIX", 1, true);
+hundsBPMPrior.animation.addByPrefix("seven", "SEVEN", 1, true);
+hundsBPMPrior.animation.addByPrefix("eight", "EIGHT", 1, true);
+hundsBPMPrior.animation.addByPrefix("nine", "NINE", 1, true);
+hundsBPMPrior.animation.play("zero");
+hundsBPMPrior.scale.set(0.9, 0.9);
+add(hundsBPMPrior);
+
+var hundsBPMCur:FunkinSprite = new FunkinSprite(505, 325 + uiOffset);
+hundsBPMCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+hundsBPMCur.animation.addByPrefix("zero", "ZERO", 1, true);
+hundsBPMCur.animation.addByPrefix("one", "ONE", 1, true);
+hundsBPMCur.animation.addByPrefix("two", "TWO", 1, true);
+hundsBPMCur.animation.addByPrefix("three", "THREE", 1, true);
+hundsBPMCur.animation.addByPrefix("four", "FOUR", 1, true);
+hundsBPMCur.animation.addByPrefix("five", "FIVE", 1, true);
+hundsBPMCur.animation.addByPrefix("six", "SIX", 1, true);
+hundsBPMCur.animation.addByPrefix("seven", "SEVEN", 1, true);
+hundsBPMCur.animation.addByPrefix("eight", "EIGHT", 1, true);
+hundsBPMCur.animation.addByPrefix("nine", "NINE", 1, true);
+hundsBPMCur.animation.play("zero");
+hundsBPMCur.scale.set(0.9, 0.9);
+add(hundsBPMCur);
+
+var hundsBPMNext:FunkinSprite = new FunkinSprite(508, 440 + uiOffset);
+hundsBPMNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+hundsBPMNext.animation.addByPrefix("zero", "ZERO", 1, true);
+hundsBPMNext.animation.addByPrefix("one", "ONE", 1, true);
+hundsBPMNext.animation.addByPrefix("two", "TWO", 1, true);
+hundsBPMNext.animation.addByPrefix("three", "THREE", 1, true);
+hundsBPMNext.animation.addByPrefix("four", "FOUR", 1, true);
+hundsBPMNext.animation.addByPrefix("five", "FIVE", 1, true);
+hundsBPMNext.animation.addByPrefix("six", "SIX", 1, true);
+hundsBPMNext.animation.addByPrefix("seven", "SEVEN", 1, true);
+hundsBPMNext.animation.addByPrefix("eight", "EIGHT", 1, true);
+hundsBPMNext.animation.addByPrefix("nine", "NINE", 1, true);
+hundsBPMNext.animation.play("zero");
+hundsBPMNext.scale.set(0.9, 0.9);
+add(hundsBPMNext);
+
+var hundsBPMNext1:FunkinSprite = new FunkinSprite(465, 555 + uiOffset);
+hundsBPMNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+hundsBPMNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+hundsBPMNext1.animation.addByPrefix("one", "ONE", 1, true);
+hundsBPMNext1.animation.addByPrefix("two", "TWO", 1, true);
+hundsBPMNext1.animation.addByPrefix("three", "THREE", 1, true);
+hundsBPMNext1.animation.addByPrefix("four", "FOUR", 1, true);
+hundsBPMNext1.animation.addByPrefix("five", "FIVE", 1, true);
+hundsBPMNext1.animation.addByPrefix("six", "SIX", 1, true);
+hundsBPMNext1.animation.addByPrefix("seven", "SEVEN", 1, true);
+hundsBPMNext1.animation.addByPrefix("eight", "EIGHT", 1, true);
+hundsBPMNext1.animation.addByPrefix("nine", "NINE", 1, true);
+hundsBPMNext1.animation.play("zero");
+hundsBPMNext1.scale.set(0.9, 0.9);
+add(hundsBPMNext1);
+
+var hundsBPMNext2:FunkinSprite = new FunkinSprite(410, 670 + uiOffset);
+hundsBPMNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+hundsBPMNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+hundsBPMNext2.animation.addByPrefix("one", "ONE", 1, true);
+hundsBPMNext2.animation.addByPrefix("two", "TWO", 1, true);
+hundsBPMNext2.animation.addByPrefix("three", "THREE", 1, true);
+hundsBPMNext2.animation.addByPrefix("four", "FOUR", 1, true);
+hundsBPMNext2.animation.addByPrefix("five", "FIVE", 1, true);
+hundsBPMNext2.animation.addByPrefix("six", "SIX", 1, true);
+hundsBPMNext2.animation.addByPrefix("seven", "SEVEN", 1, true);
+hundsBPMNext2.animation.addByPrefix("eight", "EIGHT", 1, true);
+hundsBPMNext2.animation.addByPrefix("nine", "NINE", 1, true);
+hundsBPMNext2.animation.play("zero");
+hundsBPMNext2.scale.set(0.9, 0.9);
+add(hundsBPMNext2);
+
+
+// week number
+
+var weekNumLabelPrior:FunkinSprite = new FunkinSprite(615, 208 + uiOffset);
+weekNumLabelPrior.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+weekNumLabelPrior.animation.addByPrefix("zero", "ZERO", 1, true);
+weekNumLabelPrior.animation.addByPrefix("one", "ONE", 1, false);
+weekNumLabelPrior.animation.addByPrefix("two", "TWO", 1, false);
+weekNumLabelPrior.animation.addByPrefix("three", "THREE", 1, false);
+weekNumLabelPrior.animation.addByPrefix("four", "FOUR", 1, false);
+weekNumLabelPrior.animation.addByPrefix("five", "FIVE", 1, false);
+weekNumLabelPrior.animation.addByPrefix("six", "SIX", 1, false);
+weekNumLabelPrior.animation.addByPrefix("seven", "SEVEN", 1, false);
+weekNumLabelPrior.animation.addByPrefix("eight", "EIGHT", 1, false);
+weekNumLabelPrior.animation.addByPrefix("nine", "NINE", 1, false);
+weekNumLabelPrior.animation.play("zero");
+weekNumLabelPrior.scale.set(0.9, 0.9);
+add(weekNumLabelPrior);
+
+var weekNumLabelNext:FunkinSprite = new FunkinSprite(670, 440 + uiOffset);
+weekNumLabelNext.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+weekNumLabelNext.animation.addByPrefix("zero", "ZERO", 1, true);
+weekNumLabelNext.animation.addByPrefix("one", "ONE", 1, false);
+weekNumLabelNext.animation.addByPrefix("two", "TWO", 1, false);
+weekNumLabelNext.animation.addByPrefix("three", "THREE", 1, false);
+weekNumLabelNext.animation.addByPrefix("four", "FOUR", 1, false);
+weekNumLabelNext.animation.addByPrefix("five", "FIVE", 1, false);
+weekNumLabelNext.animation.addByPrefix("six", "SIX", 1, false);
+weekNumLabelNext.animation.addByPrefix("seven", "SEVEN", 1, false);
+weekNumLabelNext.animation.addByPrefix("eight", "EIGHT", 1, false);
+weekNumLabelNext.animation.addByPrefix("nine", "NINE", 1, false);
+weekNumLabelNext.animation.play("zero");
+weekNumLabelNext.scale.set(0.9, 0.9);
+add(weekNumLabelNext);
+
+var weekNumLabelNext1:FunkinSprite = new FunkinSprite(620, 555 + uiOffset);
+weekNumLabelNext1.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+weekNumLabelNext1.animation.addByPrefix("zero", "ZERO", 1, true);
+weekNumLabelNext1.animation.addByPrefix("one", "ONE", 1, false);
+weekNumLabelNext1.animation.addByPrefix("two", "TWO", 1, false);
+weekNumLabelNext1.animation.addByPrefix("three", "THREE", 1, false);
+weekNumLabelNext1.animation.addByPrefix("four", "FOUR", 1, false);
+weekNumLabelNext1.animation.addByPrefix("five", "FIVE", 1, false);
+weekNumLabelNext1.animation.addByPrefix("six", "SIX", 1, false);
+weekNumLabelNext1.animation.addByPrefix("seven", "SEVEN", 1, false);
+weekNumLabelNext1.animation.addByPrefix("eight", "EIGHT", 1, false);
+weekNumLabelNext1.animation.addByPrefix("nine", "NINE", 1, false);
+weekNumLabelNext1.animation.play("zero");
+weekNumLabelNext1.scale.set(0.9, 0.9);
+add(weekNumLabelNext1);
+
+var weekNumLabelNext2:FunkinSprite = new FunkinSprite(570, 670 + uiOffset);
+weekNumLabelNext2.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+weekNumLabelNext2.animation.addByPrefix("zero", "ZERO", 1, true);
+weekNumLabelNext2.animation.addByPrefix("one", "ONE", 1, false);
+weekNumLabelNext2.animation.addByPrefix("two", "TWO", 1, false);
+weekNumLabelNext2.animation.addByPrefix("three", "THREE", 1, false);
+weekNumLabelNext2.animation.addByPrefix("four", "FOUR", 1, false);
+weekNumLabelNext2.animation.addByPrefix("five", "FIVE", 1, false);
+weekNumLabelNext2.animation.addByPrefix("six", "SIX", 1, false);
+weekNumLabelNext2.animation.addByPrefix("seven", "SEVEN", 1, false);
+weekNumLabelNext2.animation.addByPrefix("eight", "EIGHT", 1, false);
+weekNumLabelNext2.animation.addByPrefix("nine", "NINE", 1, false);
+weekNumLabelNext2.animation.play("zero");
+weekNumLabelNext2.scale.set(0.9, 0.9);
+add(weekNumLabelNext2);
+
+var weekNumLabelCur:FunkinSprite = new FunkinSprite(665, 325 + uiOffset);
+weekNumLabelCur.frames = Paths.getSparrowAtlas("menus/freeplay/freeplayCapsule/smallnumbers");
+weekNumLabelCur.animation.addByPrefix("zero", "ZERO", 1, true);
+weekNumLabelCur.animation.addByPrefix("one", "ONE", 1, false);
+weekNumLabelCur.animation.addByPrefix("two", "TWO", 1, false);
+weekNumLabelCur.animation.addByPrefix("three", "THREE", 1, false);
+weekNumLabelCur.animation.addByPrefix("four", "FOUR", 1, false);
+weekNumLabelCur.animation.addByPrefix("five", "FIVE", 1, false);
+weekNumLabelCur.animation.addByPrefix("six", "SIX", 1, false);
+weekNumLabelCur.animation.addByPrefix("seven", "SEVEN", 1, false);
+weekNumLabelCur.animation.addByPrefix("eight", "EIGHT", 1, false);
+weekNumLabelCur.animation.addByPrefix("nine", "NINE", 1, false);
+weekNumLabelCur.animation.play("zero");
+weekNumLabelCur.scale.set(0.9, 0.9);
+add(weekNumLabelCur);
+
+// -------------------------
+// categories
+// -------------------------
+
 
 
 // -------------------------
 // Top
 // -------------------------
-
-
 
 var blackSprite:FunkinSprite = new FunkinSprite(0, 0);
 blackSprite.loadGraphic(Paths.image("menus/freeplay/black"));
@@ -591,7 +1369,48 @@ scoreOneSprite.animation.play("Idle");
 scoreOneSprite.scale.set(0.40, 0.4);
 add(scoreOneSprite);
 
+// -------------------------
+// Accuracy
+// -------------------------
 
+var accuracyOnesSprite:FunkinSprite = new FunkinSprite(1209, 86 + uiOffset);
+accuracyOnesSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyOnesSprite.animation.addByPrefix("zero", "0", 24, false);
+accuracyOnesSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyOnesSprite.animation.addByPrefix("two", "2", 24, false);
+accuracyOnesSprite.animation.addByPrefix("three", "3", 24, false);
+accuracyOnesSprite.animation.addByPrefix("four", "4", 24, false);
+accuracyOnesSprite.animation.addByPrefix("five", "5", 24, false);
+accuracyOnesSprite.animation.addByPrefix("six", "6", 24, false);
+accuracyOnesSprite.animation.addByPrefix("sexen", "7", 24, false);
+accuracyOnesSprite.animation.addByPrefix("eight", "8", 24, false);
+accuracyOnesSprite.animation.addByPrefix("nine", "9", 24, false);
+accuracyOnesSprite.animation.play("zero");
+accuracyOnesSprite.scale.set(1,1);
+add(accuracyOnesSprite);
+
+var accuracyTensSprite:FunkinSprite = new FunkinSprite(1183, 86 + uiOffset);
+accuracyTensSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyTensSprite.animation.addByPrefix("zero", "0", 24, false);
+accuracyTensSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyTensSprite.animation.addByPrefix("two", "2", 24, false);
+accuracyTensSprite.animation.addByPrefix("three", "3", 24, false);
+accuracyTensSprite.animation.addByPrefix("four", "4", 24, false);
+accuracyTensSprite.animation.addByPrefix("five", "5", 24, false);
+accuracyTensSprite.animation.addByPrefix("six", "6", 24, false);
+accuracyTensSprite.animation.addByPrefix("sexen", "7", 24, false);
+accuracyTensSprite.animation.addByPrefix("eight", "8", 24, false);
+accuracyTensSprite.animation.addByPrefix("nine", "9", 24, false);
+accuracyTensSprite.animation.play("zero");
+accuracyTensSprite.scale.set(1,1);
+add(accuracyTensSprite);
+
+var accuracyHundsSprite:FunkinSprite = new FunkinSprite(1172, 86 + uiOffset);
+accuracyHundsSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyHundsSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyHundsSprite.animation.play("one");
+accuracyHundsSprite.scale.set(1,1);
+add(accuracyHundsSprite);
 
 // -------------------------
 // Debug stuff
@@ -647,24 +1466,91 @@ var songExtDebLabel = new FlxText(0, 430+debugoffset, 1000, "SE: " + addonthing,
 songExtDebLabel.setFormat("fonts/5by7.ttf", 25, FlxColor.BLACK, "left");
 add(songExtDebLabel);
 
+var diffNumPrior:String = songDiffNormList[index-1]; 
+var diffNumCur:String = songDiffNormList[index]; 
+var diffNumNext:String = songDiffNormList[index+1]; 
+var diffNumNext1:String = songDiffNormList[index+2]; 
+var diffNumNext2:String = songDiffNormList[index+3]; 
 
+var bpmNumPrior:String = bpmList[index-1]; 
+var bpmNumCur:String = bpmList[index]; 
+var bpmNumNext:String = bpmList[index+1]; 
+var bpmNumNext1:String = bpmList[index+2]; 
+var bpmNumNext2:String = bpmList[index+3]; 
 
-
+// -------------------------
+// Other Stuff
+// -------------------------
 
 new FlxTimer().start(20, function(tmr:FlxTimer)
 {
     highscoreSprite.animation.play("Idle");
-}, 0); // 0 = infinite repeats
-
-
+}, 0);
 
 function create()
 {
-    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst-pico.ogg" ?? songTemp[0]);
-    trace("Freeplay Loaded");    
+
+    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg");
+    trace("Freeplay Loaded");   
 }
 
+
+
 function update()
+{
+    if (index == 16 || index == 17 || basicRand == 18 || basicRand == 19)
+    {
+        remix = false;
+        addonthing = "";
+        
+    }
+    else
+    {
+        remix = "pico";
+        addonthing = "-pico";
+    }
+    if (erectMode == true)
+    {
+        remix = false;
+        addonthing = "-erect";
+    }
+    if (index != 0)
+    {
+        basicRand = 1;
+    }
+    
+    if (dj.animation.name == "intro" && dj.animation.curAnim.curFrame == 16) {
+		dj.playAnim('idle', true);
+	}
+
+    if (dj.animation.name == "exit" && dj.animation.curAnim.curFrame == 32) {
+        FlxG.switchState(new ModState('charSelect'));
+    }
+
+    //Handlers/functions
+    debugStatsHandler();
+    handleInputs();
+    capsuleHandler();
+    randomHandler();
+    diffSelectorHandler();
+    weekNumHandler();
+    bpmNumUpdateHandler();
+    accuracyHandler();
+    
+    difficultyDigitsPrior(diffNumPrior);
+    difficultyDigitsCur(diffNumCur);
+    difficultyDigitsNext(diffNumNext);
+    difficultyDigitsNext1(diffNumNext1);
+    difficultyDigitsNext2(diffNumNext2);
+
+    bpmDigitsPrior(bpmNumPrior);
+    bpmDigitsCur(bpmNumCur);
+    bpmDigitsNext(bpmNumNext);
+    bpmDigitsNext1(bpmNumNext1);
+    bpmDigitsNext2(bpmNumNext2);
+}
+
+function diffSelectorHandler()
 {
     if (index == 16 || index == 0)
     {
@@ -681,44 +1567,770 @@ function update()
         erectSelector.alpha = 1;
         nightSelector.alpha = 1; 
     }
-    if (index == 19 || index == 18 || index == 17 || index == 16 || basicRand == 19 || basicRand == 18 || basicRand == 17 || basicRand == 16)
+}
+
+function accuracyHandler()
+{
+    if (curAccuracy > 9)
     {
-        remix = false;
-        addonthing = "";
+        accuracyTensSprite.visible = true;
     }
     else
     {
-        remix = "pico";
-        addonthing = "-pico";
+        accuracyTensSprite.visible = false;
+    }
+    if (curAccuracy == 100)
+    {
+        accuracyHundsSprite.visible = true;
+    }
+    else
+    {
+        accuracyHundsSprite.visible = false;
+    }
+}
+
+function scoreHandler()
+{
+    
+}
+
+function bpmNumUpdateHandler()
+{
+    if (erectMode == false)
+    {
+        bpmNumPrior = bpmList[index-1]; 
+        bpmNumCur = bpmList[index]; 
+        bpmNumNext = bpmList[index+1]; 
+        bpmNumNext1 = bpmList[index+2]; 
+        bpmNumNext2 = bpmList[index+3]; 
     }
     if (erectMode == true)
     {
-        remix = false;
-        addonthing = "-erect";
+        bpmNumPrior = bpmErectList[indexErect-1]; 
+        bpmNumCur = bpmErectList[indexErect]; 
+        bpmNumNext = bpmErectList[indexErect+1]; 
+        bpmNumNext1 = bpmErectList[indexErect+2]; 
+        bpmNumNext2 = bpmErectList[indexErect+3]; 
     }
+}
 
-    if (index != 0)
+function weekNumHandler()
+{
+    if (erectMode == false)
     {
-        basicRand = 1;
+        // random
+        if (index-1 == 0)
+        {
+            weekNumLabelPrior.playAnim("zero");
+        }
+        if (index == 0 )
+        {
+            weekNumLabelCur.playAnim("zero");
+        }
+        if (index+1 == 0)
+        {
+            weekNumLabelNext.playAnim("zero");
+        }
+        if (index+2 == 0)
+        {
+            weekNumLabelNext1.playAnim("zero");
+        }
+        if (index+3 == 0)
+        {
+            weekNumLabelNext2.playAnim("zero");
+        }
+        // week1
+        if (index-1 == 1 || index-1 == 2 || index-1 == 3)
+        {
+            weekNumLabelPrior.playAnim("one");
+        }
+        if (index == 1 || index == 2 || index == 4)
+        {
+            weekNumLabelCur.playAnim("one");
+        }
+        if (index+1 == 1 || index+1 == 2 || index+1 == 3)
+        {
+            weekNumLabelNext.playAnim("one");
+        }
+        if (index+2 == 1 || index+2 == 2 || index+2 == 3)
+        {
+            weekNumLabelNext1.playAnim("one");
+        }
+        if (index+3 == 1 || index+3 == 2 || index+3 == 3)
+        {
+            weekNumLabelNext2.playAnim("one");
+        }
+
+        // week2
+        if (index-1 == 4 || index-1 == 5)
+        {
+            weekNumLabelPrior.playAnim("two");
+        }
+        if (index == 4 || index == 5)
+        {
+            weekNumLabelCur.playAnim("two");
+        }
+        if (index+1 == 4 || index+1 == 5)
+        {
+            weekNumLabelNext.playAnim("two");
+        }
+        if (index+2 == 4 || index+2 == 5)
+        {
+            weekNumLabelNext1.playAnim("two");
+        }
+        if (index+3 == 4 || index+3 == 5)
+        {
+            weekNumLabelNext2.playAnim("two");
+        }
+
+        // week3
+        if (index-1 == 6 || index-1 == 7 || index-1 == 8)
+        {
+            weekNumLabelPrior.playAnim("three");
+        }
+        if (index == 6 || index == 7 || index == 8)
+        {
+            weekNumLabelCur.playAnim("three");
+        }
+        if (index+1 == 6 || index+1 == 7 || index+1 == 8)
+        {
+            weekNumLabelNext.playAnim("three");
+        }
+        if (index+2 == 6 || index+2 == 7 || index+2 == 8)
+        {
+            weekNumLabelNext1.playAnim("three");
+        }
+        if (index+3 == 6 || index+3 == 7 || index+3 == 8)
+        {
+            weekNumLabelNext2.playAnim("three");
+        }
+
+        // week5
+        if (index-1 == 9 || index-1 == 10)
+        {
+            weekNumLabelPrior.playAnim("five");
+        }
+        if (index == 9 || index == 10)
+        {
+            weekNumLabelCur.playAnim("five");
+        }
+        if (index+1 == 9 || index+1 == 10)
+        {
+            weekNumLabelNext.playAnim("five");
+        }
+        if (index+2 == 9 || index+2 == 10)
+        {
+            weekNumLabelNext1.playAnim("five");
+        }
+        if (index+3 == 9 || index+3 == 10)
+        {
+            weekNumLabelNext2.playAnim("five");
+        }
+
+        // week6
+        if (index-1 == 11 || index-1 == 12)
+        {
+            weekNumLabelPrior.playAnim("six");
+        }
+        if (index == 11 || index == 12 )
+        {
+            weekNumLabelCur.playAnim("six");
+        }
+        if (index+1 == 11 || index+1 == 12)
+        {
+            weekNumLabelNext.playAnim("six");
+        }
+        if (index+2 == 11 || index+2 == 12)
+        {
+            weekNumLabelNext1.playAnim("six");
+        }
+        if (index+3 == 11 || index+3 == 12)
+        {
+            weekNumLabelNext2.playAnim("six");
+        }
+
+        // week7
+        if (index-1 == 13 || index-1 == 14 || index-1 == 15)
+        {
+            weekNumLabelPrior.playAnim("seven");
+        }
+        if (index == 13 || index == 14 || index == 15)
+        {
+            weekNumLabelCur.playAnim("seven");
+        }
+        if (index+1 == 13 || index+1 == 14 || index+1 == 15)
+        {
+            weekNumLabelNext.playAnim("seven");
+        }
+        if (index+2 == 13 || index+2 == 14 || index+2 == 15)
+        {
+            weekNumLabelNext1.playAnim("seven");
+        }
+        if (index+3 == 13 || index+3 == 14 || index+3 == 15)
+        {
+            weekNumLabelNext2.playAnim("seven");
+        }
+
+        // weekend1
+        if (index-1 == 16 || index-1 == 17 || index-1 == 18 || index-1 == 19)
+        {
+            weekNumLabelPrior.playAnim("one");
+            weekNumLabelPrior.x = 655;
+        }
+        
+        else
+        {
+            weekNumLabelPrior.x = 620;
+        }
+
+        if (index == 16 || index == 17 || index == 18 || index == 19)
+        {
+            weekNumLabelCur.playAnim("one");
+            weekNumLabelCur.x = 705;
+            
+        }
+        else
+        {
+            weekNumLabelCur.x = 670;
+        }
+
+        if (index+1 == 16 || index+1 == 17 || index+1 == 18 || index+1 == 19)
+        {
+            weekNumLabelNext.playAnim("one");
+            weekNumLabelNext.x = 715;
+           
+        }
+        else
+        {
+            weekNumLabelNext.x = 675;
+        }
+        
+
+        if (index+2 == 16 || index+2 == 17 || index+2 == 18 || index+2 == 19)
+        {
+            weekNumLabelNext1.playAnim("one");
+            weekNumLabelNext1.x = 660;
+            
+        }
+        else
+        {
+            weekNumLabelNext1.x = 625;
+        }
+        
+
+        if (index+3 == 16 || index+3 == 17 || index+3 == 18 || index+3 == 19)
+        {
+            weekNumLabelNext2.playAnim("one");
+            weekNumLabelNext2.x = 610;
+        }
+        else
+        {
+            weekNumLabelNext2.x = 575;
+        }
+        
+        
+        
     }
 
-    if (dj.animation.name == "intro" && dj.animation.curAnim.curFrame == 16) {
-		dj.playAnim('idle', true);
-	}
+    if (erectMode == true)
+    {
+        weekNumLabelPrior.x = 620;
+        weekNumLabelCur.x = 670;
+        weekNumLabelNext.x = 675;
+        weekNumLabelNext1.x = 625;
+        weekNumLabelNext2.x = 575;
 
-    if (dj.animation.name == "exit" && dj.animation.curAnim.curFrame == 32) {
-        FlxG.switchState(new ModState('charSelect'));
+        
+        // random
+        if (indexErect-1 == 0)
+        {
+            weekNumLabelPrior.playAnim("zero");
+        }
+        if (indexErect == 0)
+        {
+            weekNumLabelCur.playAnim("zero");
+        }
+        if (indexErect+1 == 0)
+        {
+            weekNumLabelNext.playAnim("zero");
+        }
+        if (indexErect+2 == 0)
+        {
+            weekNumLabelNext1.playAnim("zero");
+        }
+        if (indexErect+3 == 0)
+        {
+            weekNumLabelNext2.playAnim("zero");
+        }
+        // weekend1
+        if (indexErect-1 == 1)
+        {
+            weekNumLabelPrior.playAnim("one");
+            weekNumLabelPrior.x = 655;
+        }
+        else
+        {
+            weekNumLabelPrior.x = 620;
+        }
+        if (indexErect == 1)
+        {
+            weekNumLabelCur.playAnim("one");
+            weekNumLabelCur.x = 705; 
+        }
+        else
+        {
+            weekNumLabelCur.x = 670;
+        }
+        if (indexErect+1 == 1)
+        {
+            weekNumLabelNext.playAnim("one");
+            weekNumLabelNext.x = 715;
+        }
+        else
+        {
+            weekNumLabelNext.x = 675;
+        }
+        if (indexErect+2 == 1)
+        {
+            weekNumLabelNext1.playAnim("one");
+            weekNumLabelNext1.x = 660;
+        }
+        else
+        {
+            weekNumLabelNext1.x = 625;
+        }
+        if (indexErect+3 == 1)
+        {
+            weekNumLabelNext2.playAnim("one");
+            weekNumLabelNext2.x = 610;
+        }
+        else
+        {
+            weekNumLabelNext2.x = 575;
+        }
+    }
+}
+
+function capsuleHandler()
+{
+    if (erectMode == false)
+    {
+        if (index+3 == 19 || index+3 == 18 || index+3 == 17 || index+3 == 16)
+        {
+            weekLabelNext2.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext2.playAnim("week");
+        }
+
+        if (index+2 == 19 || index+2 == 18 || index+2 == 17 || index+2 == 16)
+        {
+            weekLabelNext1.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext1.playAnim("week");
+        }
+        if (index+1 == 19 || index+1 == 18 || index+1 == 17 || index+1 == 16)
+        {
+            weekLabelNext.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext.playAnim("week");
+        }
+        if (index == 19 || index == 18 || index == 17 || index == 16)
+        {
+            weekLabelCur.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelCur.playAnim("week");
+        }
+        if (index-1 == 18 || index-1 == 19 || index-1 == 17 || index-1 == 16)
+        {
+            weekLabelPrior.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelPrior.playAnim("week");
+        }
+
+        
+
+        if (index >= songList.length - 3)
+        {
+            
+            freeplayCapsuleNext2.visible = false;
+            nextSongLabel2.visible = false;
+            IconNext2.visible = false;
+            diffNext2.visible = false;
+            bpmNext2.visible = false;
+            weekLabelNext2.visible = false;
+            tensNext2.visible = false;
+            onesNext2.visible = false;
+            weekNumLabelNext2.visible = false;
+            onesBPMNext2.visible = false;
+            tensBPMNext2.visible = false;
+            hundsBPMNext2.visible = false;
+        }
+        else
+        {
+            
+            freeplayCapsuleNext2.visible = true;
+            nextSongLabel2.visible = true;
+            IconNext2.visible = true;
+            diffNext2.visible = true;
+            bpmNext2.visible = true;
+            weekLabelNext2.visible = true;
+            tensNext2.visible = true;
+            onesNext2.visible = true;
+            weekNumLabelNext2.visible = true;
+            onesBPMNext2.visible = true;
+            tensBPMNext2.visible = true;
+            hundsBPMNext2.visible = true;
+            
+        }
+
+        if (index >= songList.length - 2)
+        {
+            
+            freeplayCapsuleNext1.visible = false;
+            nextSongLabel1.visible = false;
+            IconNext1.visible = false;
+            diffNext1.visible = false;
+            bpmNext1.visible = false;
+            weekLabelNext1.visible = false;
+            tensNext1.visible = false;
+            onesNext1.visible = false;
+            weekNumLabelNext1.visible = false;
+            onesBPMNext1.visible = false;
+            tensBPMNext1.visible = false;
+            hundsBPMNext1.visible = false;
+
+        }
+        else
+        {
+        
+            freeplayCapsuleNext1.visible = true;
+            nextSongLabel1.visible = true;
+            IconNext1.visible = true;
+            diffNext1.visible = true;
+            bpmNext1.visible = true;
+            weekLabelNext1.visible = true;
+            tensNext1.visible = true;
+            onesNext1.visible = true;
+            weekNumLabelNext1.visible = true;
+            onesBPMNext1.visible = true;
+            tensBPMNext1.visible = true;
+            hundsBPMNext1.visible = true;
+            
+        }
+
+        if (index >= songList.length - 1)
+        {
+           
+            freeplayCapsuleNext.visible = false;
+            nextSongLabel.visible = false;
+            IconNext.visible = false;
+            diffNext.visible = false;
+            bpmNext.visible = false;
+            weekLabelNext.visible = false;
+            tensNext.visible = false;
+            onesNext.visible = false;
+            weekNumLabelNext.visible = false;
+            onesBPMNext.visible = false;
+            tensBPMNext.visible = false;
+            hundsBPMNext.visible = false;
+            
+        }
+        else
+        {
+            
+            freeplayCapsuleNext.visible = true;
+            nextSongLabel.visible = true;
+            IconNext.visible = true;
+            diffNext.visible = true;
+            bpmNext.visible = true;
+            weekLabelNext.visible = true;
+            tensNext.visible = true;
+            onesNext.visible = true;
+            weekNumLabelNext.visible = true;
+            onesBPMNext.visible = true;
+            tensBPMNext.visible = true;
+            hundsBPMNext.visible = true;
+        }
+        if (index == 0)
+        {
+            freeplayCapsulePrior.visible = false;
+            PriorSongLabel.visible = false;
+            IconPrior.visible = false;
+            diffPrior.visible = false;
+            bpmPrior.visible = false;
+            weekLabelPrior.visible = false;
+            tensPrior.visible = false;
+            onesPrior.visible = false;
+            weekNumLabelPrior.visible = false;
+            onesBPMPrior.visible = false;
+            tensBPMPrior.visible = false;
+            hundsBPMPrior.visible = false;
+        }
+        else
+        {
+            freeplayCapsulePrior.visible = true;
+            PriorSongLabel.visible = true;
+            IconPrior.visible = true;
+            diffPrior.visible = true;
+            bpmPrior.visible = true;
+            weekLabelPrior.visible = true;
+            tensPrior.visible = true;
+            onesPrior.visible = true;
+            weekNumLabelPrior.visible = true;
+            onesBPMPrior.visible = true;
+            tensBPMPrior.visible = true;
+            hundsBPMPrior.visible = true;
+        }
     }
 
+    if (erectMode == true)
+    {
+        weekLabelNext2.playAnim("week");
+        weekLabelNext1.playAnim("week");
+        weekLabelNext.playAnim("week");
+        weekLabelCur.playAnim("week");
+        weekLabelPrior.playAnim("week");
+
+        if (indexErect+3 == 1)
+        {
+            weekLabelNext2.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext2.playAnim("week");
+        }
+
+        if (indexErect+2 == 1)
+        {
+            weekLabelNext1.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext1.playAnim("week");
+        }
+        if (indexErect+1 == 1)
+        {
+            weekLabelNext.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelNext.playAnim("week");
+        }
+        if (indexErect == 1)
+        {
+            weekLabelCur.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelCur.playAnim("week");
+        }
+        if (indexErect-1 == 1)
+        {
+            weekLabelPrior.playAnim("weekend");
+        }
+        else
+        {
+            weekLabelPrior.playAnim("week");
+        }
+
+        
+        if (indexErect == 0)
+        {
+            freeplayCapsulePrior.visible = false;
+            PriorSongLabel.visible = false;
+            IconPrior.visible = false;
+            diffPrior.visible = false;
+            bpmPrior.visible = false;
+            weekLabelPrior.visible = false;
+            tensPrior.visible = false;
+            onesPrior.visible = false;
+            weekNumLabelPrior.visible = false;
+            onesBPMPrior.visible = false;
+            tensBPMPrior.visible = false;
+            hundsBPMPrior.visible = false;
+
+        }
+        else
+        {
+            freeplayCapsulePrior.visible = true;
+            PriorSongLabel.visible = true;
+            IconPrior.visible = true;
+            diffPrior.visible = true;
+            bpmPrior.visible = true;
+            weekLabelPrior.visible = true;
+            tensPrior.visible = true;
+            onesPrior.visible = true;
+            weekNumLabelPrior.visible = true;
+            onesBPMPrior.visible = true;
+            tensBPMPrior.visible = true;
+            hundsBPMPrior.visible = true;
+        }
+
+        if (indexErect >= songErectList.length - 3)
+        {
+            freeplayCapsuleNext2.visible = false;
+            nextSongLabel2.visible = false;
+            IconNext2.visible = false;
+            diffNext2.visible = false;
+            bpmNext2.visible = false;
+            weekLabelNext2.visible = false;
+            tensNext2.visible = false;
+            onesNext2.visible = false;
+            weekNumLabelNext2.visible = false;
+            onesBPMNext2.visible = false;
+            tensBPMNext2.visible = false;
+            hundsBPMNext2.visible = false;
+        }
+        else
+        {
+            freeplayCapsuleNext2.visible = true;
+            nextSongLabel2.visible = true;
+            IconNext2.visible = true;
+            diffNext2.visible = true;
+            bpmNext2.visible = true;
+            weekLabelNext2.visible = true;
+            tensNext2.visible = true;
+            onesNext2.visible = true;
+            weekNumLabelNext2.visible = true;
+            onesBPMNext2.visible = true;
+            tensBPMNext2.visible = true;
+            hundsBPMNext2.visible = true;
+        }
+
+        if (indexErect >= songErectList.length - 2)
+        {
+            freeplayCapsuleNext1.visible = false;
+            nextSongLabel1.visible = false;
+            IconNext1.visible = false;
+            diffNext1.visible = false;
+            bpmNext1.visible = false;
+            weekLabelNext1.visible = false;
+            tensNext1.visible = false;
+            onesNext1.visible = false;
+            weekNumLabelNext1.visible = false;
+            onesBPMNext1.visible = false;
+            tensBPMNext1.visible = false;
+            hundsBPMNext1.visible = false;
+        }
+        else
+        {
+            freeplayCapsuleNext1.visible = true;
+            nextSongLabel1.visible = true;
+            IconNext1.visible = true;
+            diffNext1.visible = true;
+            bpmNext1.visible = true;
+            weekLabelNext1.visible = true;
+            tensNext1.visible = true;
+            onesNext1.visible = true;
+            weekNumLabelNext1.visible = true;
+            onesBPMNext1.visible = true;
+            tensBPMNext1.visible = true;
+            hundsBPMNext1.visible = true;
+        }
+
+        if (indexErect >= songErectList.length - 1)
+        {
+            freeplayCapsuleNext.visible = false;
+            nextSongLabel.visible = false;
+            IconNext.visible = false;
+            diffNext.visible = false;
+            bpmNext.visible = false;
+            weekLabelNext.visible = false;
+            tensNext.visible = false;
+            onesNext.visible = false;
+            weekNumLabelNext.visible = false;
+            onesBPMNext.visible = false;
+            tensBPMNext.visible = false;
+            hundsBPMNext.visible = false;
+        }
+        else
+        {
+            freeplayCapsuleNext.visible = true;
+            nextSongLabel.visible = true;
+            IconNext.visible = true;
+            diffNext.visible = true;
+            bpmNext.visible = true;
+            weekLabelNext.visible = true;
+            tensNext.visible = true;
+            onesNext.visible = true;
+            weekNumLabelNext.visible = true;
+            onesBPMNext.visible = true;
+            tensBPMNext.visible = true;
+            hundsBPMNext.visible = true;
+        }
+    }
+
+    if (diff == 0)
+    {
+        diffNumPrior = songDiffEasyList[index-1]; 
+        diffNumCur = songDiffEasyList[index]; 
+        diffNumNext = songDiffEasyList[index+1]; 
+        diffNumNext1 = songDiffEasyList[index+2]; 
+        diffNumNext2 = songDiffEasyList[index+3]; 
+    }
+
+    if (diff == 1)
+    {
+        diffNumPrior = songDiffNormList[index-1]; 
+        diffNumCur = songDiffNormList[index]; 
+        diffNumNext = songDiffNormList[index+1]; 
+        diffNumNext1 = songDiffNormList[index+2]; 
+        diffNumNext2 = songDiffNormList[index+3]; 
+    }
+
+    if (diff == 2)
+    {
+        diffNumPrior = songDiffHardList[index-1]; 
+        diffNumCur = songDiffHardList[index]; 
+        diffNumNext = songDiffHardList[index+1]; 
+        diffNumNext1 = songDiffHardList[index+2]; 
+        diffNumNext2 = songDiffHardList[index+3]; 
+    }
+
+    if (diff == 3)
+    {
+        diffNumPrior = songDiffErectList[indexErect-1]; 
+        diffNumCur = songDiffErectList[indexErect]; 
+        diffNumNext = songDiffErectList[indexErect+1]; 
+        diffNumNext1 = songDiffErectList[indexErect+2]; 
+        diffNumNext2 = songDiffErectList[indexErect+3]; 
+    }
+
+    if (diff == 4)
+    {
+        diffNumPrior = songDiffNightList[indexErect-1]; 
+        diffNumCur = songDiffNightList[indexErect]; 
+        diffNumNext = songDiffNightList[indexErect+1]; 
+        diffNumNext1 = songDiffNightList[indexErect+2]; 
+        diffNumNext2 = songDiffNightList[indexErect+3]; 
+    }
+    
+}
+
+function randomHandler()
+{
     if (index == 0)
     {
         if (songStarted == false)
         {
             if (erectMode == false)
             {
-                basicRand = FlxG.random.int(1, 19);
+                basicRand = FlxG.random.int(1, songList.length - 1);
             }
-            
+            if (erectMode == true)
+            {
+                erectRand = FlxG.random.int(1, songErectList.length - 1);
+            }
         }   
         
     }
@@ -728,15 +2340,15 @@ function update()
         {
             if (erectMode == true)
             {
-                erectRand = FlxG.random.int(1, 1);
+                erectRand = FlxG.random.int(1, 16);
             }
         }   
         
     }
-    
+}
 
-    // Debug stuff
-
+function debugStatsHandler()
+{
     curAnimDebLabel.text = "CA: " + dj.animation.name;
 
     curFrameDebLabel.text = "CF: " + dj.animation.curAnim.curFrame;
@@ -759,6 +2371,7 @@ function update()
         curRandSongDebLabel.text = "CRS: " + displayList[basicRand];
 
         curDiffDebLabel.text = "CD: " + diffList[diff];
+
         
     }
 
@@ -831,14 +2444,560 @@ function update()
 
         songExtDebLabel.visible = false;
     }
-    
-
-    handleInputs();
 }
 
-// -------------------------
-// Song thing for erect stuff
-// -------------------------
+function bpmDigitsPrior(bpmNumPrior:String)
+{
+    // Always 3 digits, pad with zeros if needed
+    var padded:String = StringTools.lpad(bpmNumPrior, "0", 3);
+
+    // Convert chars to Ints so they match your switch cases
+    var onesCharBPMPrior:Int = Std.parseInt(padded.charAt(2));
+    var tensCharBPMPrior:Int = Std.parseInt(padded.charAt(1));
+    var hundsCharBPMPrior:Int = Std.parseInt(padded.charAt(0));
+
+    
+
+    // Show/hide digits (optional)
+    if (hundsCharBPMPrior == 0)
+    {
+        hundsBPMPrior.visible = false;
+    }
+    else
+    {
+        hundsBPMPrior.visible = true;
+    }
+
+    if (tensCharBPMPrior == 1)
+    {
+        onesBPMPrior.x = 474;
+    }
+    else
+    {
+        onesBPMPrior.x = 478;
+    }
+    
+
+    switch (onesCharBPMPrior)
+    {
+        case 0: onesBPMPrior.animation.play("zero");
+        case 1: onesBPMPrior.animation.play("one");
+        case 2: onesBPMPrior.animation.play("two");
+        case 3: onesBPMPrior.animation.play("three");
+        case 4: onesBPMPrior.animation.play("four");
+        case 5: onesBPMPrior.animation.play("five");
+        case 6: onesBPMPrior.animation.play("six");
+        case 7: onesBPMPrior.animation.play("seven");
+        case 8: onesBPMPrior.animation.play("eight");
+        case 9: onesBPMPrior.animation.play("nine");
+    }
+
+    switch (tensCharBPMPrior)
+    {
+        case 0: tensBPMPrior.animation.play("zero");
+        case 1: tensBPMPrior.animation.play("one");
+        case 2: tensBPMPrior.animation.play("two");
+        case 3: tensBPMPrior.animation.play("three");
+        case 4: tensBPMPrior.animation.play("four");
+        case 5: tensBPMPrior.animation.play("five");
+        case 6: tensBPMPrior.animation.play("six");
+        case 7: tensBPMPrior.animation.play("seven");
+        case 8: tensBPMPrior.animation.play("eight");
+        case 9: tensBPMPrior.animation.play("nine");
+    }
+
+    switch (hundsCharBPMPrior)
+    {
+        case 0: hundsBPMPrior.animation.play("zero");
+        case 1: hundsBPMPrior.animation.play("one");
+        case 2: hundsBPMPrior.animation.play("two");
+        case 3: hundsBPMPrior.animation.play("three");
+        case 4: hundsBPMPrior.animation.play("four");
+        case 5: hundsBPMPrior.animation.play("five");
+        case 6: hundsBPMPrior.animation.play("six");
+        case 7: hundsBPMPrior.animation.play("seven");
+        case 8: hundsBPMPrior.animation.play("eight");
+        case 9: hundsBPMPrior.animation.play("nine");
+    }
+}
+
+function bpmDigitsCur(bpmNumCur:String)
+{
+    // Always 3 digits, pad with zeros if needed
+    var padded:String = StringTools.lpad(bpmNumCur, "0", 3);
+
+    // Convert chars to Ints so they match your switch cases
+    var onesCharBPMCur:Int = Std.parseInt(padded.charAt(2));
+    var tensCharBPMCur:Int = Std.parseInt(padded.charAt(1));
+    var hundsCharBPMCur:Int = Std.parseInt(padded.charAt(0));
+
+    
+
+    // Show/hide digits (optional)
+    if (hundsCharBPMCur == 0)
+    {
+        hundsBPMCur.visible = false;
+    }
+    else
+    {
+        hundsBPMCur.visible = true;
+    }
+
+    if (tensCharBPMCur == 1)
+    {
+        onesBPMCur.x = 521;
+    }
+    else
+    {
+        onesBPMCur.x = 525;
+    }
+    
+
+    switch (onesCharBPMCur)
+    {
+        case 0: onesBPMCur.animation.play("zero");
+        case 1: onesBPMCur.animation.play("one");
+        case 2: onesBPMCur.animation.play("two");
+        case 3: onesBPMCur.animation.play("three");
+        case 4: onesBPMCur.animation.play("four");
+        case 5: onesBPMCur.animation.play("five");
+        case 6: onesBPMCur.animation.play("six");
+        case 7: onesBPMCur.animation.play("seven");
+        case 8: onesBPMCur.animation.play("eight");
+        case 9: onesBPMCur.animation.play("nine");
+    }
+
+    switch (tensCharBPMCur)
+    {
+        case 0: tensBPMCur.animation.play("zero");
+        case 1: tensBPMCur.animation.play("one");
+        case 2: tensBPMCur.animation.play("two");
+        case 3: tensBPMCur.animation.play("three");
+        case 4: tensBPMCur.animation.play("four");
+        case 5: tensBPMCur.animation.play("five");
+        case 6: tensBPMCur.animation.play("six");
+        case 7: tensBPMCur.animation.play("seven");
+        case 8: tensBPMCur.animation.play("eight");
+        case 9: tensBPMCur.animation.play("nine");
+    }
+
+    switch (hundsCharBPMCur)
+    {
+        case 0: hundsBPMCur.animation.play("zero");
+        case 1: hundsBPMCur.animation.play("one");
+        case 2: hundsBPMCur.animation.play("two");
+        case 3: hundsBPMCur.animation.play("three");
+        case 4: hundsBPMCur.animation.play("four");
+        case 5: hundsBPMCur.animation.play("five");
+        case 6: hundsBPMCur.animation.play("six");
+        case 7: hundsBPMCur.animation.play("seven");
+        case 8: hundsBPMCur.animation.play("eight");
+        case 9: hundsBPMCur.animation.play("nine");
+    }
+}
+
+function bpmDigitsNext(bpmNumNext:String)
+{
+    // Always 3 digits, pad with zeros if needed
+    var padded:String = StringTools.lpad(bpmNumNext, "0", 3);
+
+    // Convert chars to Ints so they match your switch cases
+    var onesCharBPMNext:Int = Std.parseInt(padded.charAt(2));
+    var tensCharBPMNext:Int = Std.parseInt(padded.charAt(1));
+    var hundsCharBPMNext:Int = Std.parseInt(padded.charAt(0));
+
+    
+
+    // Show/hide digits (optional)
+    if (hundsCharBPMNext == 0)
+    {
+        hundsBPMNext.visible = false;
+    }
+    else
+    {
+        hundsBPMNext.visible = true;
+    }
+
+    if (tensCharBPMNext == 1)
+    {
+        onesBPMNext.x = 523;
+    }
+    else
+    {
+        onesBPMNext.x = 528;
+    }
+    
+
+    switch (onesCharBPMNext)
+    {
+        case 0: onesBPMNext.animation.play("zero");
+        case 1: onesBPMNext.animation.play("one");
+        case 2: onesBPMNext.animation.play("two");
+        case 3: onesBPMNext.animation.play("three");
+        case 4: onesBPMNext.animation.play("four");
+        case 5: onesBPMNext.animation.play("five");
+        case 6: onesBPMNext.animation.play("six");
+        case 7: onesBPMNext.animation.play("seven");
+        case 8: onesBPMNext.animation.play("eight");
+        case 9: onesBPMNext.animation.play("nine");
+    }
+
+    switch (tensCharBPMNext)
+    {
+        case 0: tensBPMNext.animation.play("zero");
+        case 1: tensBPMNext.animation.play("one");
+        case 2: tensBPMNext.animation.play("two");
+        case 3: tensBPMNext.animation.play("three");
+        case 4: tensBPMNext.animation.play("four");
+        case 5: tensBPMNext.animation.play("five");
+        case 6: tensBPMNext.animation.play("six");
+        case 7: tensBPMNext.animation.play("seven");
+        case 8: tensBPMNext.animation.play("eight");
+        case 9: tensBPMNext.animation.play("nine");
+    }
+
+    switch (hundsCharBPMNext)
+    {
+        case 0: hundsBPMNext.animation.play("zero");
+        case 1: hundsBPMNext.animation.play("one");
+        case 2: hundsBPMNext.animation.play("two");
+        case 3: hundsBPMNext.animation.play("three");
+        case 4: hundsBPMNext.animation.play("four");
+        case 5: hundsBPMNext.animation.play("five");
+        case 6: hundsBPMNext.animation.play("six");
+        case 7: hundsBPMNext.animation.play("seven");
+        case 8: hundsBPMNext.animation.play("eight");
+        case 9: hundsBPMNext.animation.play("nine");
+    }
+}
+
+function bpmDigitsNext1(bpmNumNext1:String)
+{
+    // Always 3 digits, pad with zeros if needed
+    var padded:String = StringTools.lpad(bpmNumNext1, "0", 3);
+
+    // Convert chars to Ints so they match your switch cases
+    var onesCharBPMNext1:Int = Std.parseInt(padded.charAt(2));
+    var tensCharBPMNext1:Int = Std.parseInt(padded.charAt(1));
+    var hundsCharBPMNext1:Int = Std.parseInt(padded.charAt(0));
+
+    
+
+    // Show/hide digits (optional)
+    if (hundsCharBPMNext1 == 0)
+    {
+        hundsBPMNext1.visible = false;
+    }
+    else
+    {
+        hundsBPMNext1.visible = true;
+    }
+
+    if (tensCharBPMNext1 == 1)
+    {
+        onesBPMNext1.x = 481;
+    }
+    else
+    {
+        onesBPMNext1.x = 485;
+    }
+    
+
+    switch (onesCharBPMNext1)
+    {
+        case 0: onesBPMNext1.animation.play("zero");
+        case 1: onesBPMNext1.animation.play("one");
+        case 2: onesBPMNext1.animation.play("two");
+        case 3: onesBPMNext1.animation.play("three");
+        case 4: onesBPMNext1.animation.play("four");
+        case 5: onesBPMNext1.animation.play("five");
+        case 6: onesBPMNext1.animation.play("six");
+        case 7: onesBPMNext1.animation.play("seven");
+        case 8: onesBPMNext1.animation.play("eight");
+        case 9: onesBPMNext1.animation.play("nine");
+    }
+
+    switch (tensCharBPMNext1)
+    {
+        case 0: tensBPMNext1.animation.play("zero");
+        case 1: tensBPMNext1.animation.play("one");
+        case 2: tensBPMNext1.animation.play("two");
+        case 3: tensBPMNext1.animation.play("three");
+        case 4: tensBPMNext1.animation.play("four");
+        case 5: tensBPMNext1.animation.play("five");
+        case 6: tensBPMNext1.animation.play("six");
+        case 7: tensBPMNext1.animation.play("seven");
+        case 8: tensBPMNext1.animation.play("eight");
+        case 9: tensBPMNext1.animation.play("nine");
+    }
+
+    switch (hundsCharBPMNext1)
+    {
+        case 0: hundsBPMNext1.animation.play("zero");
+        case 1: hundsBPMNext1.animation.play("one");
+        case 2: hundsBPMNext1.animation.play("two");
+        case 3: hundsBPMNext1.animation.play("three");
+        case 4: hundsBPMNext1.animation.play("four");
+        case 5: hundsBPMNext1.animation.play("five");
+        case 6: hundsBPMNext1.animation.play("six");
+        case 7: hundsBPMNext1.animation.play("seven");
+        case 8: hundsBPMNext1.animation.play("eight");
+        case 9: hundsBPMNext1.animation.play("nine");
+    }
+}
+
+function bpmDigitsNext2(bpmNumNext2:String)
+{
+    // Always 3 digits, pad with zeros if needed
+    var padded:String = StringTools.lpad(bpmNumNext2, "0", 3);
+
+    // Convert chars to Ints so they match your switch cases
+    var onesCharBPMNext2:Int = Std.parseInt(padded.charAt(2));
+    var tensCharBPMNext2:Int = Std.parseInt(padded.charAt(1));
+    var hundsCharBPMNext2:Int = Std.parseInt(padded.charAt(0));
+
+    
+
+    // Show/hide digits (optional)
+    if (hundsCharBPMNext2 == 0)
+    {
+        hundsBPMNext2.visible = false;
+    }
+    else
+    {
+        hundsBPMNext2.visible = true;
+    }
+
+    if (tensCharBPMNext2 == 1)
+    {
+        onesBPMNext2.x = 426;
+    }
+    else
+    {
+        onesBPMNext2.x = 430;
+    }
+    
+
+    switch (onesCharBPMNext2)
+    {
+        case 0: onesBPMNext2.animation.play("zero");
+        case 1: onesBPMNext2.animation.play("one");
+        case 2: onesBPMNext2.animation.play("two");
+        case 3: onesBPMNext2.animation.play("three");
+        case 4: onesBPMNext2.animation.play("four");
+        case 5: onesBPMNext2.animation.play("five");
+        case 6: onesBPMNext2.animation.play("six");
+        case 7: onesBPMNext2.animation.play("seven");
+        case 8: onesBPMNext2.animation.play("eight");
+        case 9: onesBPMNext2.animation.play("nine");
+    }
+
+    switch (tensCharBPMNext2)
+    {
+        case 0: tensBPMNext2.animation.play("zero");
+        case 1: tensBPMNext2.animation.play("one");
+        case 2: tensBPMNext2.animation.play("two");
+        case 3: tensBPMNext2.animation.play("three");
+        case 4: tensBPMNext2.animation.play("four");
+        case 5: tensBPMNext2.animation.play("five");
+        case 6: tensBPMNext2.animation.play("six");
+        case 7: tensBPMNext2.animation.play("seven");
+        case 8: tensBPMNext2.animation.play("eight");
+        case 9: tensBPMNext2.animation.play("nine");
+    }
+
+    switch (hundsCharBPMNext2)
+    {
+        case 0: hundsBPMNext2.animation.play("zero");
+        case 1: hundsBPMNext2.animation.play("one");
+        case 2: hundsBPMNext2.animation.play("two");
+        case 3: hundsBPMNext2.animation.play("three");
+        case 4: hundsBPMNext2.animation.play("four");
+        case 5: hundsBPMNext2.animation.play("five");
+        case 6: hundsBPMNext2.animation.play("six");
+        case 7: hundsBPMNext2.animation.play("seven");
+        case 8: hundsBPMNext2.animation.play("eight");
+        case 9: hundsBPMNext2.animation.play("nine");
+    }
+}
+
+function difficultyDigitsPrior(diffNumPrior:String)
+{
+    var padded:String = StringTools.lpad(diffNumPrior, "0", 2);
+    var onesCharPrior:String = padded.charAt(1);
+    var tensCharPrior:String = padded.charAt(0);
+
+    switch (tensCharPrior)
+    {
+        case "0": tensPrior.animation.play("zero");
+        case "1": tensPrior.animation.play("one");
+        case "2": tensPrior.animation.play("two");
+        case "3": tensPrior.animation.play("three");
+        case "4": tensPrior.animation.play("four");
+        case "5": tensPrior.animation.play("five");
+        case "6": tensPrior.animation.play("six");
+        case "7": tensPrior.animation.play("seven");
+        case "8": tensPrior.animation.play("eight");
+        case "9": tensPrior.animation.play("nine");
+    }
+
+    switch (onesCharPrior)
+    {
+        case "0": onesPrior.animation.play("zero");
+        case "1": onesPrior.animation.play("one");
+        case "2": onesPrior.animation.play("two");
+        case "3": onesPrior.animation.play("three");
+        case "4": onesPrior.animation.play("four");
+        case "5": onesPrior.animation.play("five");
+        case "6": onesPrior.animation.play("six");
+        case "7": onesPrior.animation.play("seven");
+        case "8": onesPrior.animation.play("eight");
+        case "9": onesPrior.animation.play("nine");
+    }
+}
+
+function difficultyDigitsCur(diffNumCur:String)
+{
+    var padded:String = StringTools.lpad(diffNumCur, "0", 2);
+    var tensCurChar:String = padded.charAt(0);
+    var onesCurChar:String = padded.charAt(1);
+
+    switch (tensCurChar)
+    {
+        case "0": tensCur.animation.play("zero");
+        case "1": tensCur.animation.play("one");
+        case "2": tensCur.animation.play("two");
+        case "3": tensCur.animation.play("three");
+        case "4": tensCur.animation.play("four");
+        case "5": tensCur.animation.play("five");
+        case "6": tensCur.animation.play("six");
+        case "7": tensCur.animation.play("seven");
+        case "8": tensCur.animation.play("eight");
+        case "9": tensCur.animation.play("nine");
+    }
+
+    switch (onesCurChar)
+    {
+        case "0": onesCur.animation.play("zero");
+        case "1": onesCur.animation.play("one");
+        case "2": onesCur.animation.play("two");
+        case "3": onesCur.animation.play("three");
+        case "4": onesCur.animation.play("four");
+        case "5": onesCur.animation.play("five");
+        case "6": onesCur.animation.play("six");
+        case "7": onesCur.animation.play("seven");
+        case "8": onesCur.animation.play("eight");
+        case "9": onesCur.animation.play("nine");
+    }
+}
+
+function difficultyDigitsNext(diffNumNext:String)
+{
+    var padded:String = StringTools.lpad(diffNumNext, "0", 2);
+
+    var tensNextChar:String = padded.charAt(0);
+    var onesNextChar:String = padded.charAt(1);
+
+    switch (tensNextChar)
+    {
+        case "0": tensNext.animation.play("zero");
+        case "1": tensNext.animation.play("one");
+        case "2": tensNext.animation.play("two");
+        case "3": tensNext.animation.play("three");
+        case "4": tensNext.animation.play("four");
+        case "5": tensNext.animation.play("five");
+        case "6": tensNext.animation.play("six");
+        case "7": tensNext.animation.play("seven");
+        case "8": tensNext.animation.play("eight");
+        case "9": tensNext.animation.play("nine");
+    }
+
+    switch (onesNextChar)
+    {
+        case "0": onesNext.animation.play("zero");
+        case "1": onesNext.animation.play("one");
+        case "2": onesNext.animation.play("two");
+        case "3": onesNext.animation.play("three");
+        case "4": onesNext.animation.play("four");
+        case "5": onesNext.animation.play("five");
+        case "6": onesNext.animation.play("six");
+        case "7": onesNext.animation.play("seven");
+        case "8": onesNext.animation.play("eight");
+        case "9": onesNext.animation.play("nine");
+    }
+}
+
+function difficultyDigitsNext1(diffNumNext1:String)
+{
+    var padded:String = StringTools.lpad(diffNumNext1, "0", 2);
+
+    var tensNext1Char:String = padded.charAt(0);
+    var onesNext1Char:String = padded.charAt(1);
+
+    switch (tensNext1Char)
+    {
+        case "0": tensNext1.animation.play("zero");
+        case "1": tensNext1.animation.play("one");
+        case "2": tensNext1.animation.play("two");
+        case "3": tensNext1.animation.play("three");
+        case "4": tensNext1.animation.play("four");
+        case "5": tensNext1.animation.play("five");
+        case "6": tensNext1.animation.play("six");
+        case "7": tensNext1.animation.play("seven");
+        case "8": tensNext1.animation.play("eight");
+        case "9": tensNext1.animation.play("nine");
+    }
+
+    switch (onesNext1Char)
+    {
+        case "0": onesNext1.animation.play("zero");
+        case "1": onesNext1.animation.play("one");
+        case "2": onesNext1.animation.play("two");
+        case "3": onesNext1.animation.play("three");
+        case "4": onesNext1.animation.play("four");
+        case "5": onesNext1.animation.play("five");
+        case "6": onesNext1.animation.play("six");
+        case "7": onesNext1.animation.play("seven");
+        case "8": onesNext1.animation.play("eight");
+        case "9": onesNext1.animation.play("nine");
+    }
+}
+
+function difficultyDigitsNext2(diffNumNext2:String)
+{
+    var padded:String = StringTools.lpad(diffNumNext2, "0", 2);
+
+    var tensNext2Char:String = padded.charAt(0);
+    var onesNext2Char:String = padded.charAt(1);
+
+    switch (tensNext2Char)
+    {
+        case "0": tensNext2.animation.play("zero");
+        case "1": tensNext2.animation.play("one");
+        case "2": tensNext2.animation.play("two");
+        case "3": tensNext2.animation.play("three");
+        case "4": tensNext2.animation.play("four");
+        case "5": tensNext2.animation.play("five");
+        case "6": tensNext2.animation.play("six");
+        case "7": tensNext2.animation.play("seven");
+        case "8": tensNext2.animation.play("eight");
+        case "9": tensNext2.animation.play("nine");
+    }
+
+    switch (onesNext2Char)
+    {
+        case "0": onesNext2.animation.play("zero");
+        case "1": onesNext2.animation.play("one");
+        case "2": onesNext2.animation.play("two");
+        case "3": onesNext2.animation.play("three");
+        case "4": onesNext2.animation.play("four");
+        case "5": onesNext2.animation.play("five");
+        case "6": onesNext2.animation.play("six");
+        case "7": onesNext2.animation.play("seven");
+        case "8": onesNext2.animation.play("eight");
+        case "9": onesNext2.animation.play("nine");
+    }
+}
 
 function diffChange(direction)
 {
@@ -849,43 +3008,57 @@ function diffChange(direction)
         {   
             
             // Random
-            if (index==0)
+            if (index<16)
             {
                 indexErect=0;
                 freeplayCapsuleNext.visible = true;
                 nextSongLabel.visible = true;
                 IconNext.visible = true;
+                diffNext.visible = true;
+                bpmNext.visible = true;
+
                 freeplayCapsuleNext1.visible = false;
                 nextSongLabel1.visible = false;
                 IconNext1.visible = false;
+                diffNext1.visible = false;
+                bpmNext1.visible = false;
+
                 freeplayCapsuleNext2.visible = false;
                 nextSongLabel2.visible = false;
                 IconNext2.visible = false;
+                diffNext2.visible = false;
+                bpmNext2.visible = false;
             }
-            // darnell
-            else
+            // Tutorial
+            if (index>=16)
             {
                 indexErect=1;
                 freeplayCapsuleNext.visible = false;
                 nextSongLabel.visible = false;
                 IconNext.visible = false;
+                diffNext.visible = false;
+                bpmNext.visible = false;
                 freeplayCapsuleNext1.visible = false;
                 nextSongLabel1.visible = false;
                 IconNext1.visible = false;
+                diffNext1.visible = false;
+                bpmNext1.visible = false;
                 freeplayCapsuleNext2.visible = false;
                 nextSongLabel2.visible = false;
                 IconNext2.visible = false;
+                diffNext2.visible = false;
+                bpmNext2.visible = false;
             }
-            
-            
-            if (index==0)
+            if (index<16)
             {
+                indexErect=0;
                 CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[indexErect]);
             }
             else
             {
-                CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst-erect.ogg" ?? songTemp[0],false,1,true,bpmList[indexErect]);
                 
+                addonthing = "-erect";
+                CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[indexErect]);
             }
         }
         if (diff == 2)
@@ -895,38 +3068,37 @@ function diffChange(direction)
             if (indexErect==0)
             {
                 index=0;
-                freeplayCapsuleNext.visible = true;
-                nextSongLabel.visible = true;
-                IconNext.visible = true;
-                freeplayCapsuleNext1.visible = true;
-                nextSongLabel1.visible = true;
-                IconNext1.visible = true;
-                freeplayCapsuleNext2.visible = true;
-                nextSongLabel2.visible = true;
-                IconNext2.visible = true;
             }
-            // darnell
-            else
+            // bopeebo
+            if (indexErect==1)
             {
                 index=16;
                 freeplayCapsuleNext.visible = true;
                 nextSongLabel.visible = true;
                 IconNext.visible = true;
+                diffNext.visible = true;
+                bpmNext.visible = true;
                 freeplayCapsuleNext1.visible = true;
                 nextSongLabel1.visible = true;
                 IconNext1.visible = true;
+                diffNext1.visible = true;
+                bpmNext1.visible = true;
                 freeplayCapsuleNext2.visible = true;
                 nextSongLabel2.visible = true;
                 IconNext2.visible = true;
+                diffNext2.visible = true;
+                bpmNext2.visible = true;
+            
             }
-
-            if (index==0)
+            if (indexErect==0)
             {
+                index=0;
                 CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[index]);
             }
             else
             {
-                CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[index]);
+                addonthing = "";
+                CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[index]);
             }
         }
     }
@@ -934,86 +3106,99 @@ function diffChange(direction)
     if (direction == "right")
     {
         if (diff == 3)
-        {   
+        {
             
-            // Random
-            if (index==0)
+            if (index<16)
             {
                 indexErect=0;
                 freeplayCapsuleNext.visible = true;
                 nextSongLabel.visible = true;
                 IconNext.visible = true;
+                diffNext.visible = true;
+                bpmNext.visible = true;
+
                 freeplayCapsuleNext1.visible = false;
                 nextSongLabel1.visible = false;
                 IconNext1.visible = false;
+                diffNext1.visible = false;
+                bpmNext1.visible = false;
+
                 freeplayCapsuleNext2.visible = false;
                 nextSongLabel2.visible = false;
                 IconNext2.visible = false;
+                diffNext2.visible = false;
+                bpmNext2.visible = false;
             }
-            // darnell
-            else
+            // Tutorial
+            if (index>=16)
             {
                 indexErect=1;
                 freeplayCapsuleNext.visible = false;
                 nextSongLabel.visible = false;
                 IconNext.visible = false;
+                diffNext.visible = false;
+                bpmNext.visible = false;
                 freeplayCapsuleNext1.visible = false;
                 nextSongLabel1.visible = false;
                 IconNext1.visible = false;
+                diffNext1.visible = false;
+                bpmNext1.visible = false;
                 freeplayCapsuleNext2.visible = false;
                 nextSongLabel2.visible = false;
                 IconNext2.visible = false;
+                diffNext2.visible = false;
+                bpmNext2.visible = false;
             }
-            
-            
-            if (index==0)
+            if (index<16)
             {
+                indexErect=0;
                 CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[indexErect]);
             }
             else
             {
-                CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst-erect.ogg" ?? songTemp[0],false,1,true,bpmList[indexErect]);
+                
+                addonthing = "-erect";
+                CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[indexErect]);
             }
         }
         if (diff > 4)
-        {   
+        {
             
             // Random
             if (indexErect==0)
             {
                 index=0;
-                freeplayCapsuleNext.visible = true;
-                nextSongLabel.visible = true;
-                IconNext.visible = true;
-                freeplayCapsuleNext1.visible = true;
-                nextSongLabel1.visible = true;
-                IconNext1.visible = true;
-                freeplayCapsuleNext2.visible = true;
-                nextSongLabel2.visible = true;
-                IconNext2.visible = true;
             }
-            // darnell
-            else
+            // bopeebo
+            if (indexErect==1)
             {
                 index=16;
                 freeplayCapsuleNext.visible = true;
                 nextSongLabel.visible = true;
                 IconNext.visible = true;
+                diffNext.visible = true;
+                bpmNext.visible = true;
                 freeplayCapsuleNext1.visible = true;
                 nextSongLabel1.visible = true;
                 IconNext1.visible = true;
+                diffNext1.visible = true;
+                bpmNext1.visible = true;
                 freeplayCapsuleNext2.visible = true;
                 nextSongLabel2.visible = true;
                 IconNext2.visible = true;
+                diffNext2.visible = true;
+                bpmNext2.visible = true;
+            
             }
-
-            if (index==0)
+            if (indexErect==0)
             {
+                index=0;
                 CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[index]);
             }
             else
             {
-                CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[index]);
+                addonthing = "";
+                CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[index]);
             }
         }
     }
@@ -1028,7 +3213,7 @@ function handleDiffs()
         hardSelector.color = 0x575757;
         normSelector.color = 0x575757;
         easySelector.color = 0xffffff;
-
+        
         diffSprite.loadGraphic(Paths.image("menus/freeplay/freeplayDifficulties/freeplayeasy"));
         diffSprite.visible = true;
         diffNightSprite.visible = false;
@@ -1043,12 +3228,12 @@ function handleDiffs()
         IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2] ?? icons[0]);
+        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2]);
         IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3] ?? icons[0]);
+        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3]);
         IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
@@ -1062,6 +3247,13 @@ function handleDiffs()
         curIcon.animation.addByPrefix("Idle", "idle", 24, true);
         curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
         curIcon.animation.addByPrefix("Hold", "hold", 24, true);
+        albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songOSTList[index]));
+                
+
+        albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
+        albumText.animation.addByPrefix("idle", "idle", 24, true);
+        albumText.animation.addByPrefix("switch", "switch", 24, false);
+        albumText.animation.play("idle");
     }
     if (diff == 1)
     {
@@ -1085,12 +3277,12 @@ function handleDiffs()
         IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2] ?? icons[0]);
+        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2]);
         IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3] ?? icons[0]);
+        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3]);
         IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
@@ -1104,6 +3296,13 @@ function handleDiffs()
         curIcon.animation.addByPrefix("Idle", "idle", 24, true);
         curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
         curIcon.animation.addByPrefix("Hold", "hold", 24, true);
+        albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songOSTList[index]));
+                
+
+        albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
+        albumText.animation.addByPrefix("idle", "idle", 24, true);
+        albumText.animation.addByPrefix("switch", "switch", 24, false);
+        albumText.animation.play("idle");
     }
     if (diff == 2)
     {
@@ -1127,12 +3326,12 @@ function handleDiffs()
         IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2] ?? icons[0]);
+        IconNext1.frames = Paths.getSparrowAtlas(icons[index+2]);
         IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3] ?? icons[0]);
+        IconNext2.frames = Paths.getSparrowAtlas(icons[index+3]);
         IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
@@ -1146,6 +3345,13 @@ function handleDiffs()
         curIcon.animation.addByPrefix("Idle", "idle", 24, true);
         curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
         curIcon.animation.addByPrefix("Hold", "hold", 24, true);
+        albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songOSTList[index]));
+                
+
+        albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
+        albumText.animation.addByPrefix("idle", "idle", 24, true);
+        albumText.animation.addByPrefix("switch", "switch", 24, false);
+        albumText.animation.play("idle");
     }
     if (diff == 3)
     {
@@ -1164,30 +3370,37 @@ function handleDiffs()
         nextSongLabel.text = displayErectList[indexErect+1];
         nextSongLabel1.text = displayErectList[indexErect+2];
         nextSongLabel2.text = displayErectList[indexErect+3];
-        IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? iconsErect[0]);
+        IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? icons[0]);
         IconNext.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? iconsErect[0]);
+        IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? icons[0]);
         IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? iconsErect[0]);
+        IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? icons[0]);
         IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? iconsErect[0]);
+        IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? icons[0]);
         IconPrior.animation.addByPrefix("Idle", "idle", 24, true);
         IconPrior.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconPrior.animation.addByPrefix("Hold", "hold", 24, true);
 
-        curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? iconsErect[0]);
+        curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect]);
         curIcon.animation.addByPrefix("Idle", "idle", 24, true);
         curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
         curIcon.animation.addByPrefix("Hold", "hold", 24, true);
+        albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]));
+                
+
+        albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]+"-text");
+        albumText.animation.addByPrefix("idle", "idle", 24, true);
+        albumText.animation.addByPrefix("switch", "switch", 24, false);
+        albumText.animation.play("idle");
     }
     if (diff == 4)
     {
@@ -1197,6 +3410,7 @@ function handleDiffs()
         normSelector.color = 0x575757;
         easySelector.color = 0x575757;
 
+
         diffSprite.visible = false;
         diffNightSprite.visible = true;
         erectMode = true;
@@ -1205,36 +3419,43 @@ function handleDiffs()
         nextSongLabel.text = displayErectList[indexErect+1];
         nextSongLabel1.text = displayErectList[indexErect+2];
         nextSongLabel2.text = displayErectList[indexErect+3];
-        IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? iconsErect[0]);
+        IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? icons[0]);
         IconNext.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? iconsErect[0]);
+        IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? icons[0]);
         IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? iconsErect[0]);
+        IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? icons[0]);
         IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
         IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
 
-        IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? iconsErect[0]);
+        IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? icons[0]);
         IconPrior.animation.addByPrefix("Idle", "idle", 24, true);
         IconPrior.animation.addByPrefix("Confirm", "confirm", 10, false);
         IconPrior.animation.addByPrefix("Hold", "hold", 24, true);
 
-        curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? iconsErect[0]);
+        curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect]);
         curIcon.animation.addByPrefix("Idle", "idle", 24, true);
         curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
         curIcon.animation.addByPrefix("Hold", "hold", 24, true);
+        albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]));
+                
+
+        albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]+"-text");
+        albumText.animation.addByPrefix("idle", "idle", 24, true);
+        albumText.animation.addByPrefix("switch", "switch", 24, false);
+        albumText.animation.play("idle");
     }
 }
 
 function handleInputs()
 {
-    if (FlxG.keys.justPressed.LEFT)
+    if (controls.LEFT_P)
     {
         songStarted = false;
         {
@@ -1254,7 +3475,7 @@ function handleInputs()
         
     }
 
-    if (FlxG.keys.justPressed.RIGHT)
+    if (controls.RIGHT_P)
     {
         songStarted = false;
         {
@@ -1274,7 +3495,7 @@ function handleInputs()
         
     }
 
-    if (FlxG.keys.justPressed.UP)
+    if (controls.UP_P)
     {
         songStarted = false;
         {
@@ -1284,67 +3505,24 @@ function handleInputs()
             
                 index--;
                 FlxG.sound.play(Paths.sound("menu/scroll"), 0.7);
+                
+
+                
 
                 if (index < 0)
                 {
-                    index = 19;
+                    addonthing = "";
+                    index = songList.length - 1;
                     
                 }
 
                 if (index == 0)
                 {
-                    CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[index]);
-                    freeplayCapsulePrior.visible = false;
-                    PriorSongLabel.visible = false;
+                    CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[index]);                    
                 }
                 else
                 {
-                    
-                    
-                    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[index]);
-                    freeplayCapsulePrior.visible = true;
-                    PriorSongLabel.visible = true;
-                }
-
-                if (index >= 17)
-                {
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
-                }
-                else
-                {
-                    freeplayCapsuleNext2.visible = true;
-                    nextSongLabel2.visible = true;
-                    IconNext2.visible = true;
-                }
-
-                if (index >= 18)
-                {
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-                }
-                else
-                {
-
-                    freeplayCapsuleNext1.visible = true;
-                    nextSongLabel1.visible = true;
-                    IconNext1.visible = true;
-                }
-
-                if (index >= 19)
-                {
-                    freeplayCapsuleNext.visible = false;
-                    nextSongLabel.visible = false;
-                    IconNext.visible = false;
-                }
-                else
-                {
-                    
-                    freeplayCapsuleNext.visible = true;
-                    nextSongLabel.visible = true;
-                    IconNext.visible = true;
+                    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[index]);
                 }
 
                 
@@ -1383,8 +3561,16 @@ function handleInputs()
                 curIcon.animation.addByPrefix("Hold", "hold", 24, true);
 
                 curSongLabel.text = displayList[index];
+                albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songOSTList[index]));
+                
+
+                albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
+                albumText.animation.addByPrefix("idle", "idle", 24, true);
+                albumText.animation.addByPrefix("switch", "switch", 24, false);
+                albumText.animation.play("idle");
                 trace("song changed to: " + songList[index]);
                 trace("BPM changed to: " + bpmList[index]);
+                
             }
             if (erectMode == true)
             {
@@ -1395,55 +3581,21 @@ function handleInputs()
 
                 if (indexErect < 0)
                 {
-                    indexErect = 1;
+                    indexErect = songErectList.length - 1;
                     
                 }
 
                 if (indexErect == 0)
                 {
                     CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[indexErect]);
-                    freeplayCapsulePrior.visible = false;
-                    PriorSongLabel.visible = false;
-                    
                 }
                 else
                 {
                     
-                    CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[indexErect]);
-                    freeplayCapsulePrior.visible = true;
-                    PriorSongLabel.visible = true;
-                }
-
-                if (indexErect >= 1)
-                {
                     
-                    freeplayCapsuleNext.visible = false;
-                    nextSongLabel.visible = false;
-                    IconNext.visible = false;
-
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
+                    CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmErectList[indexErect]);
                 }
-                else
-                {
-                    
-                    freeplayCapsuleNext.visible = true;
-                    nextSongLabel.visible = true;
-                    IconNext.visible = true;
 
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
-                }
                 
                 PriorSongLabel.text = displayErectList[indexErect-1];
                 nextSongLabel.text = displayErectList[indexErect+1];
@@ -1454,39 +3606,46 @@ function handleInputs()
 
                 
                 
-                IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? iconsErect[0]);
+                IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? icons[0]);
                 IconNext.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? iconsErect[0]);
+                IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? icons[0]);
                 IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? iconsErect[0]);
+                IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? icons[0]);
                 IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? iconsErect[0]);
+                IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? icons[0]);
                 IconPrior.animation.addByPrefix("Idle", "idle", 24, true);
                 IconPrior.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconPrior.animation.addByPrefix("Hold", "hold", 24, true);
                 
-                curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? iconsErect[0]);
+                curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? icons[0]);
                 curIcon.animation.addByPrefix("Idle", "idle", 24, true);
                 curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
                 curIcon.animation.addByPrefix("Hold", "hold", 24, true);
 
                 curSongLabel.text = displayErectList[indexErect];
+                albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]));
+                
+
+                albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]+"-text");
+                albumText.animation.addByPrefix("idle", "idle", 24, true);
+                albumText.animation.addByPrefix("switch", "switch", 24, false);
+                albumText.animation.play("idle");
                 trace("song changed to: " + songList[indexErect]);
                 trace("BPM changed to: " + bpmList[indexErect]);
             }
         }
     }
 
-    if (FlxG.keys.justPressed.DOWN)
+    if (controls.DOWN_P)
     {
         songStarted = false;
         {
@@ -1495,72 +3654,25 @@ function handleInputs()
                 index++;
                 FlxG.sound.play(Paths.sound("menu/scroll"), 0.7);
 
-                if (index > 19)
+                if (index > songList.length - 1)
                 {
                     index = 0;
-                    
                     
                     
                 }
                 if (index == 0)
                 {
                     CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[index]);
-                    freeplayCapsulePrior.visible = false;
-                    PriorSongLabel.visible = false;
                     
                 }
                 else
                 {
                     
-                    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[index]);
-                    freeplayCapsulePrior.visible = true;
-                    PriorSongLabel.visible = true;
+                    CoolUtil.playMusic("songs/"+songList[index]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmList[index]);
+                    
                 }
 
-                if (index >= 17)
-                {
-                    
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
-                }
-                else
-                {
-                    
-                    freeplayCapsuleNext2.visible = true;
-                    nextSongLabel2.visible = true;
-                    IconNext2.visible = true;
-                }
-
-                if (index >= 18)
-                {
-                    
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-                }
-                else
-                {
-                    
-                    freeplayCapsuleNext1.visible = true;
-                    nextSongLabel1.visible = true;
-                    IconNext1.visible = true;
-                }
-
-                if (index >= 19)
-                {
-                    
-                    freeplayCapsuleNext.visible = false;
-                    nextSongLabel.visible = false;
-                    IconNext.visible = false;
-                }
-                else
-                {
-                    
-                    freeplayCapsuleNext.visible = true;
-                    nextSongLabel.visible = true;
-                    IconNext.visible = true;
-                }
+                
 
                 
                 PriorSongLabel.text = displayList[index-1];
@@ -1576,7 +3688,7 @@ function handleInputs()
                 IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconNext1.frames = Paths.getSparrowAtlas(icons[index+2] ?? icons[0]);
+                IconNext1.frames = Paths.getSparrowAtlas(icons[index+2]) ?? icons[0];
                 IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
@@ -1596,6 +3708,13 @@ function handleInputs()
                 curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
                 curIcon.animation.addByPrefix("Hold", "hold", 24, true);
                 curSongLabel.text = displayList[index];
+                albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songOSTList[index]));
+                
+
+                albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songOSTList[index]+"-text");
+                albumText.animation.addByPrefix("idle", "idle", 24, true);
+                albumText.animation.addByPrefix("switch", "switch", 24, false);
+                albumText.animation.play("idle");
                 trace("song changed to: " + songList[index]);
                 trace("BPM changed to: " + bpmList[index]);
             }
@@ -1604,59 +3723,18 @@ function handleInputs()
                 indexErect++;
                 FlxG.sound.play(Paths.sound("menu/scroll"), 0.7);
 
-                if (indexErect > 1)
+                if (indexErect > songErectList.length - 1)
                 {
                     indexErect = 0;
-                    
-                    
                 }
                 if (indexErect == 0)
                 {
                     CoolUtil.playMusic("music/freeplayRandom/freeplayRandom.ogg",false,1,true,bpmList[indexErect]);
-                    freeplayCapsulePrior.visible = false;
-                    PriorSongLabel.visible = false;
-                    
                 }
                 else
                 {
-                    
-                    CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg" ?? songTemp[0],false,1,true,bpmList[indexErect]);
-                    freeplayCapsulePrior.visible = true;
-                    PriorSongLabel.visible = true;
+                    CoolUtil.playMusic("songs/"+songErectList[indexErect]+"/song/Inst"+addonthing+".ogg",false,1,true,bpmErectList[indexErect]);        
                 }
-
-                if (indexErect >= 1)
-                {
-                    
-                    freeplayCapsuleNext.visible = false;
-                    nextSongLabel.visible = false;
-                    IconNext.visible = false;
-
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
-                }
-                else
-                {
-                    
-                    freeplayCapsuleNext.visible = true;
-                    nextSongLabel.visible = true;
-                    IconNext.visible = true;
-                    
-                    freeplayCapsuleNext1.visible = false;
-                    nextSongLabel1.visible = false;
-                    IconNext1.visible = false;
-
-                    freeplayCapsuleNext2.visible = false;
-                    nextSongLabel2.visible = false;
-                    IconNext2.visible = false;
-                }
-
-                
 
                 
                 PriorSongLabel.text = displayErectList[indexErect-1];
@@ -1667,31 +3745,38 @@ function handleInputs()
 
                 
 
-                IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? iconsErect[0]);
+                IconNext.frames = Paths.getSparrowAtlas(iconsErect[indexErect+1] ?? icons[0]);
                 IconNext.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? iconsErect[0]);
+                IconNext1.frames = Paths.getSparrowAtlas(iconsErect[indexErect+2] ?? icons[0]);
                 IconNext1.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext1.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext1.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? iconsErect[0]);
+                IconNext2.frames = Paths.getSparrowAtlas(iconsErect[indexErect+3] ?? icons[0]);
                 IconNext2.animation.addByPrefix("Idle", "idle", 24, true);
                 IconNext2.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconNext2.animation.addByPrefix("Hold", "hold", 24, true);
 
-                IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? iconsErect[0]);
+                IconPrior.frames = Paths.getSparrowAtlas(iconsErect[indexErect-1] ?? icons[0]);
                 IconPrior.animation.addByPrefix("Idle", "idle", 24, true);
                 IconPrior.animation.addByPrefix("Confirm", "confirm", 10, false);
                 IconPrior.animation.addByPrefix("Hold", "hold", 24, true);
 
-                curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? iconsErect[0]);
+                curIcon.frames = Paths.getSparrowAtlas(iconsErect[indexErect] ?? icons[0]);
                 curIcon.animation.addByPrefix("Idle", "idle", 24, true);
                 curIcon.animation.addByPrefix("Confirm", "confirm", 10, false);
                 curIcon.animation.addByPrefix("Hold", "hold", 24, true);
                 curSongLabel.text = displayErectList[indexErect];
+                albumCover.loadGraphic(Paths.image("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]));
+                
+
+                albumText.frames = Paths.getSparrowAtlas("menus/freeplay/albumRoll/"+songErectOSTList[indexErect]+"-text");
+                albumText.animation.addByPrefix("idle", "idle", 24, true);
+                albumText.animation.addByPrefix("switch", "switch", 24, false);
+                albumText.animation.play("idle");
                 trace("song changed to: " + songErectList[indexErect]);
                 trace("BPM changed to: " + bpmErectList[indexErect]);
             }
@@ -1703,8 +3788,7 @@ function handleInputs()
         if (songStarted == false)
         {
             dj.playAnim('confirm', true);
-            
-            
+            songStarted = true;
             curIcon.animation.play("Confirm");
             curIcon.animation.finishCallback = function(name:String)
             {
@@ -1718,110 +3802,140 @@ function handleInputs()
             {
                 if (diff == 0)
                 {
-                    if (index == 0)
+                    if (erectMode == false)
                     {
-                        PlayState.loadSong(songList[basicRand], "easy", remix);
-                        FlxG.switchState(new PlayState());
-                    }
-                    else
-                    {
-                        PlayState.loadSong(songList[index], "easy", remix);
-                        FlxG.switchState(new PlayState());
+                        if (index == 0)
+                        {
+                            PlayState.loadSong(songList[basicRand], "easy", false, false);
+                            FlxG.switchState(new PlayState());
+                        }
+                        else
+                        {
+                            PlayState.loadSong(songList[index], "easy", false, false);
+                            FlxG.switchState(new PlayState());
+                        }
                     }
                 }
                 if (diff == 1)
                 {
-                    if (index == 0)
+                    if (erectMode == false)
                     {
-                        PlayState.loadSong(songList[basicRand], "normal", remix);
-                        FlxG.switchState(new PlayState());
-                    }
-                    else
-                    {
-                        PlayState.loadSong(songList[index], "normal", remix);
-                        FlxG.switchState(new PlayState());
+                        if (index == 0)
+                        {
+                            PlayState.loadSong(songList[basicRand], "normal", false, false);
+                            FlxG.switchState(new PlayState());
+                        }
+                        else
+                        {
+                            PlayState.loadSong(songList[index], "normal", false, false);
+                            FlxG.switchState(new PlayState());
+                        }
                     }
                 }
                 if (diff == 2)
                 {
-                    if (index == 0)
+                    if (erectMode == false)
                     {
-                        PlayState.loadSong(songList[basicRand], "hard", remix);
-                        FlxG.switchState(new PlayState());
-                    }
-                    else
-                    {
-                        PlayState.loadSong(songList[index], "hard", remix);
-                        FlxG.switchState(new PlayState());
-                        
+                        if (index == 0)
+                        {
+                            PlayState.loadSong(songList[basicRand], "hard", remix);
+                            FlxG.switchState(new PlayState());
+                        }
+                        else
+                        {
+                            PlayState.loadSong(songList[index], "hard", remix);
+                            FlxG.switchState(new PlayState());
+                            
+                        }
                     }
                 }
                 if (diff == 3)
                 {
-                    if (index == 0)
+                    if (erectMode == true)
                     {
-                        PlayState.loadSong(songList[erectRand], "erect", "erect");
-                        FlxG.switchState(new PlayState());
-                    }
-                    else
-                    {
-                        PlayState.loadSong(songErectList[indexErect], "erect", "erect");
-                        FlxG.switchState(new PlayState());
-                        
-                        
-                        
+                        if (index == 0)
+                        {
+                            PlayState.loadSong(songErectList[erectRand], "erect", "erect");
+                            FlxG.switchState(new PlayState());
+                            //trace("ERROR: NOT IMPLEMENTED YET");
+                            //FlxG.sound.play(Paths.sound("CS_locked"), 0.7);
+                            //songStarted = false;
+                            //curIcon.animation.play("Idle", true);
+                            //dj.playAnim('idle', true);
+                        }
+                        else
+                        {
+                            PlayState.loadSong(songErectList[indexErect], "erect", "erect");
+                            FlxG.switchState(new PlayState());
+                            //trace("ERROR: NOT IMPLEMENTED YET");
+                            //FlxG.sound.play(Paths.sound("CS_locked"), 0.7);
+                            //songStarted = false;
+                            //curIcon.animation.play("Idle", true);
+                            //dj.playAnim('idle', true);
+                        }
                     }
                 }
                 if (diff == 4)
                 {
-                    if (index == 0)
+                    if (erectMode == true)
                     {
-                        PlayState.loadSong(songList[erectRand], "nightmare", "erect");
-                        FlxG.switchState(new PlayState());
-                        
-                        
-                        
-                    }
-                    else
-                    {
-                        PlayState.loadSong(songErectList[indexErect], "nightmare", "erect");
-                        FlxG.switchState(new PlayState());
-                        
+                        if (indexErect == 0)
+                        {
+                            PlayState.loadSong(songErectList[erectRand], "nightmare", "erect");
+                            FlxG.switchState(new PlayState());
+                            //trace("ERROR: NOT IMPLEMENTED YET");
+                            //FlxG.sound.play(Paths.sound("CS_locked"), 0.7);
+                            //songStarted = false;
+                            //curIcon.animation.play("Idle", true);
+                            //dj.playAnim('idle', true);
+                            
+                            
+                        }
+                        else
+                        {
+                            PlayState.loadSong(songErectList[indexErect], "nightmare", "erect");
+                            FlxG.switchState(new PlayState());
+                            //trace("ERROR: NOT IMPLEMENTED YET");
+                            //FlxG.sound.play(Paths.sound("CS_locked"), 0.7);
+                            //songStarted = false;
+                            //curIcon.animation.play("Idle", true);
+                            //dj.playAnim('idle', true);
+                        }
                     }
                 }
             });
         }
     }
 
-    if (FlxG.keys.justPressed.TAB)
+    if (controls.getJustPressed("charSelect"))
     {
         if (songStarted == false)
         {
-            
-            dj.playAnim('exit', true);
+            dj.playAnim("exit", true);
             FlxG.sound.play(Paths.sound("menu/confirm"), 0.7);
             songStarted = true;
         }
         
-        
     }
 
-    if (FlxG.keys.justPressed.SEVEN)
+    if (controls.getJustPressed("debugStats"))
     {
-        
-        if (songStarted == false && devmode == false && debugthingy == true)
+        if (allowDebug == true)
         {
-            FlxG.sound.play(Paths.sound("secret"), 0.7);
-            devmode = true;
-            debugthingy = false;
-        }
+            if (songStarted == false && devmode == false && debugthingy == true)
+            {
+                FlxG.sound.play(Paths.sound("secret"), 0.7);
+                devmode = true;
+                debugthingy = false;
+            }
 
-        if (songStarted == false && devmode == true && debugthingy == true)
-        {
-            devmode = false;
-            debugthingy = false;
+            if (songStarted == false && devmode == true && debugthingy == true)
+            {
+                devmode = false;
+                debugthingy = false;
+            }
+            debugthingy = true;    
         }
-        debugthingy = true;    
     }
 
     if (controls.BACK)
@@ -1833,9 +3947,11 @@ function handleInputs()
         }
         new FlxTimer().start(0.3, function(tmr:FlxTimer)
         {
+            
             if (songStarted == false)
             {
                 FlxG.switchState(new MainMenuState());
+                
             }
                 
         });

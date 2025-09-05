@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="tankmanPico" flipX="true" icon="tankman" color="#000000" x="60" y="170">
+	<anim name="idle" anim="Tankman Idle Dance instance "/>
+	<anim name="singDOWN" anim="Tankman DOWN note instance " x="73" y="-104"/>
+	<anim name="singLEFT" anim="Tankman Right Note instance " x="89" y="-15"/>
+	<anim name="singRIGHT" anim="Tankman Note Left instance " x="-19" y="-28"/>
+	<anim name="singUP" anim="Tankman UP note instance " x="45" y="50"/>
+	<anim name="argh" anim="tankman ARGH" x="45"/>
+	<anim name="laugh" anim="tankman laugh" x="-20" y="10"/>
+	<anim name="beat it" anim="tankman beat it" x="70" y="-15"/>
+	<anim name="ugh" anim="TANKMAN UGH instance " x="-15" y="-10"/>
+	<anim name="good" anim="PRETTY GOOD tankman instance " y="15"/>
+</character>

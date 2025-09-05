@@ -10,6 +10,8 @@ var allowDebug = FlxG.save.data.devAccess;
 
 trace(allowDebug);
 
+var curAccuracy = 0;
+
 var remix = false;
 
 var addonthing = "";
@@ -1549,6 +1551,49 @@ scoreOneSprite.scale.set(0.40, 0.4);
 add(scoreOneSprite);
 
 // -------------------------
+// Accuracy
+// -------------------------
+
+var accuracyOnesSprite:FunkinSprite = new FunkinSprite(1209, 86 + uiOffset);
+accuracyOnesSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyOnesSprite.animation.addByPrefix("zero", "0", 24, false);
+accuracyOnesSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyOnesSprite.animation.addByPrefix("two", "2", 24, false);
+accuracyOnesSprite.animation.addByPrefix("three", "3", 24, false);
+accuracyOnesSprite.animation.addByPrefix("four", "4", 24, false);
+accuracyOnesSprite.animation.addByPrefix("five", "5", 24, false);
+accuracyOnesSprite.animation.addByPrefix("six", "6", 24, false);
+accuracyOnesSprite.animation.addByPrefix("sexen", "7", 24, false);
+accuracyOnesSprite.animation.addByPrefix("eight", "8", 24, false);
+accuracyOnesSprite.animation.addByPrefix("nine", "9", 24, false);
+accuracyOnesSprite.animation.play("zero");
+accuracyOnesSprite.scale.set(1,1);
+add(accuracyOnesSprite);
+
+var accuracyTensSprite:FunkinSprite = new FunkinSprite(1183, 86 + uiOffset);
+accuracyTensSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyTensSprite.animation.addByPrefix("zero", "0", 24, false);
+accuracyTensSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyTensSprite.animation.addByPrefix("two", "2", 24, false);
+accuracyTensSprite.animation.addByPrefix("three", "3", 24, false);
+accuracyTensSprite.animation.addByPrefix("four", "4", 24, false);
+accuracyTensSprite.animation.addByPrefix("five", "5", 24, false);
+accuracyTensSprite.animation.addByPrefix("six", "6", 24, false);
+accuracyTensSprite.animation.addByPrefix("sexen", "7", 24, false);
+accuracyTensSprite.animation.addByPrefix("eight", "8", 24, false);
+accuracyTensSprite.animation.addByPrefix("nine", "9", 24, false);
+accuracyTensSprite.animation.play("zero");
+accuracyTensSprite.scale.set(1,1);
+add(accuracyTensSprite);
+
+var accuracyHundsSprite:FunkinSprite = new FunkinSprite(1172, 86 + uiOffset);
+accuracyHundsSprite.frames = Paths.getSparrowAtlas("menus/freeplay/freeplay-clear");
+accuracyHundsSprite.animation.addByPrefix("one", "1", 24, false);
+accuracyHundsSprite.animation.play("one");
+accuracyHundsSprite.scale.set(1,1);
+add(accuracyHundsSprite);
+
+// -------------------------
 // Debug stuff
 // -------------------------
 
@@ -1677,6 +1722,7 @@ function update()
     difficultyDigitsNext(diffNumNext);
     difficultyDigitsNext1(diffNumNext1);
     difficultyDigitsNext2(diffNumNext2);
+    accuracyHandler();
 
     bpmDigitsPrior(bpmNumPrior);
     bpmDigitsCur(bpmNumCur);
@@ -1706,7 +1752,22 @@ function diffSelectorHandler()
 
 function accuracyHandler()
 {
-    
+    if (curAccuracy > 9)
+    {
+        accuracyTensSprite.visible = true;
+    }
+    else
+    {
+        accuracyTensSprite.visible = false;
+    }
+    if (curAccuracy == 100)
+    {
+        accuracyHundsSprite.visible = true;
+    }
+    else
+    {
+        accuracyHundsSprite.visible = false;
+    }
 }
 
 function scoreHandler()
